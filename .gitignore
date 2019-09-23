@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.cache/
+.next
+dist/
+.env
+.DS_Store
+coverage/
+.vscode/
