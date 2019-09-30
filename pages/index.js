@@ -1,12 +1,13 @@
 import Layout from '../components/Layout';
-import Link from 'next/link';
-import ItemInput from '../components/ItemInput';
+import ItemForm from '../components/ItemForm';
 
 export default function Index() {
   return (
     <Layout>
       <h1>Min App</h1>
-      <ItemInput />
+      <ItemForm 
+        saveItem={console.warn}
+      />
     </Layout>
   );
 }
