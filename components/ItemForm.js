@@ -12,12 +12,12 @@ const ItemForm = ({saveItem}) => {
           saveItem(value);
         }}
       >
-          <input 
-            id="inputItem"
-            placeholder="item input"
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-          />
+        <input 
+          id="inputItem"
+          placeholder="item input"
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
+        />
       </form>
     </div>
   )
