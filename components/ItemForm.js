@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 const ItemForm = ({saveItem}) => {
 
-  console.log(saveItem)
   const [value, setValue] = useState('');
 
   return (
