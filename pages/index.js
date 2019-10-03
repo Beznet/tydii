@@ -18,7 +18,11 @@ export default function Index() {
         }}
       />
 
-      <ItemList items={items} />
+      <ItemList items={items} deleteItem={(itemIndex) => {
+        const newItems = items.filter((_, index) => index !== itemIndex);
+
+        setItems(newItems)
+      }}/>
     </Layout>
   );
 }
