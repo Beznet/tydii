@@ -10,6 +10,7 @@ const ItemForm = ({saveItem}) => {
         onSubmit={(e) => {
           e.preventDefault();
           saveItem(value);
+          setValue('');
         }}
       >
         <input 
