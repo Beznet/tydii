@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
+import useInputState from './useInputState';
 
 const ItemForm = ({saveItem}) => {
-
-  const [value, setValue] = useState('');
+  const {value, reset, onChange} = useInputState('')
 
   return (
     <div>
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
+        onSubmit={(event) => {
+          event.preventDefault();
           saveItem(value);
-          setValue('');
+          reset();
         }}
       >
         <input 
           id="inputItem"
           placeholder="item input"
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onChange}
           value={value}
         />
       </form>
