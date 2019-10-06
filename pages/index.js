@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
+import useItemState from '../components/useItemState';
 
 export default function Index() {
-  const [items, setItems] = useState([])
+  const { items, addItem, deleteItem} = useItemState([])
 
   return (
     <Layout>
@@ -14,15 +15,13 @@ export default function Index() {
         saveItem={ itemText => {
           const trimmedText = itemText.trim();
 
-          setItems([...items, trimmedText])
+          if(trimmedText.length > 0) {
+            addItem(trimmedText)
+          }
         }}
       />
 
-      <ItemList items={items} deleteItem={(itemIndex) => {
-        const newItems = items.filter((_, index) => index !== itemIndex);
-
-        setItems(newItems)
-      }}/>
+      <ItemList items={items} deleteItem={ deleteItem } />
     </Layout>
   );
 }
