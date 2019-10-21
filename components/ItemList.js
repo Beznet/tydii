@@ -1,4 +1,5 @@
 import React from 'react';
+import Star from '../components/Rating';
 
 const ItemList = ({ items, deleteItem }) => {
 
@@ -10,6 +11,7 @@ const ItemList = ({ items, deleteItem }) => {
             <button onClick={()=> deleteItem(index)}>
               Delete Item
             </button>
+            <Star />
           </li>
       ))}
     </ul>
