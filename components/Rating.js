@@ -2,7 +2,7 @@ import React from 'react';
 
 const Star = () => {
   return (
-    <img src='../assets/star_test.png'/>
+    <img src='/star_test.png'/>
   )
 }
 
