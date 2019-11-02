@@ -3,7 +3,6 @@ import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
 import useItemState from '../components/useItemState';
-import Star from '../components/Rating';
 
 export default function Index() {
   const { items, addItem, deleteItem} = useItemState([])
@@ -22,7 +21,6 @@ export default function Index() {
         }}
       />
       <ItemList items={items} deleteItem={ deleteItem } />
-      <Star />
     </Layout>
   );
 }
