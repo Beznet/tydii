@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
 import useItemState from '../components/useItemState';
+// import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 
 export default function Index() {
   const { items, addItem, deleteItem} = useItemState([])

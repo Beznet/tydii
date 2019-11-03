@@ -1,17 +1,30 @@
-import React from 'react';
-import Star from '../components/Rating';
+import React, { useState } from 'react';
+import { CustomInput, Button } from 'reactstrap';
 
 const ItemList = ({ items, deleteItem }) => {
+
+const [ value, setValue ] = useState()
+
+console.log(value)
 
   return (
     <ul>
       {items.map((item, index) => (
           <li>
-            <h2>{item}</h2>
-            <button onClick={()=> deleteItem(index)}>
+            <p>{item}</p>
+            <Button onClick={()=> deleteItem(index)}>
               Delete Item
-            </button>
-            <Star />
+            </Button>
+            <input
+              type="range" 
+              className="slider" 
+              name="customRange"
+
+              value={value}
+              onChange={(e) => setValue(e.target.value)} 
+              min="1" 
+              max="5" 
+            />
           </li>
       ))}
     </ul>

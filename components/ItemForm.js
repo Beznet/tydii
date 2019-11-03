@@ -1,5 +1,6 @@
 import React from 'react'
 import useInputState from './useInputState';
+import { Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
 
 const ItemForm = ({saveItem}) => {
   const {value, reset, onChange} = useInputState('')
@@ -11,17 +12,19 @@ const ItemForm = ({saveItem}) => {
 
   return (
     <div>
-      <form
+      <Form
         onSubmit={itemSubmit}
       >
-        <input 
+      <FormGroup>
+        <Input 
           id="inputItem"
           placeholder="item input"
           onChange={onChange}
           value={value}
         />
-        <button onClick={itemSubmit}>Submit</button>
-      </form>
+        <Button onClick={itemSubmit}>Submit</Button>
+      </FormGroup>
+      </Form>
     </div>
   )
 }
