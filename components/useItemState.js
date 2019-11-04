@@ -3,8 +3,10 @@ import { useState } from 'react'
 export default (initialValue) => {
   const [items, setItems] = useState(initialValue);
 
+  console.log(items)
+  
   return {
-    items, 
+    items,
     addItem: (itemText) => {
       setItems([...items, itemText])
     },
