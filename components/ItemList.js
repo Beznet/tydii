@@ -2,21 +2,29 @@ import React, { useState } from 'react';
 import { CustomInput, Button } from 'reactstrap';
 import Slider from './Slider';
 
-const ItemList = ({ items, deleteItem }) => {
+/**
+ * TODO: Make an Item component
+ */
+const ItemList = ({ items, deleteItem, updateItem }) => {
 
-const [ value, setValue ] = useState()
+  const renderItems = () => items.map(item => {
+    const deleteHandler = () => deleteItem(item.id)
+    const updateValueHandler = (rating) => updateItem(Object.assign({}, item, {rating}))
+
+    return (
+      <li>
+        <p>{item.name}</p>
+        <Button onClick={()=> deleteItem(item.id)}>
+          Delete Item
+        </Button>
+        <Slider value={item.rating} onValueChange={updateValueHandler}/>
+      </li>
+    )
+  })
 
   return (
     <ul>
-      {items.map((item, index) => (
-          <li>
-            <p>{item}</p>
-            <Button onClick={()=> deleteItem(index)}>
-              Delete Item
-            </Button>
-            <Slider />
-          </li>
-      ))}
+      {renderItems()}
     </ul>
   )
 }

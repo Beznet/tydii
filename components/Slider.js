@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Slider = () => {
-  const [ value, setValue ] = useState()
-
-  console.log(value)
+const Slider = ({value, onValueChange}) => {
+  const onChange = e => {
+    onValueChange(e.target.value)
+  }
 
   return (
     <>
@@ -12,7 +12,7 @@ const Slider = () => {
       className="slider" 
       name="customRange"
       value={value}
-      onChange={(e) => setValue(e.target.value)} 
+      onChange={onChange} 
       min="1" 
       max="5" 
     />

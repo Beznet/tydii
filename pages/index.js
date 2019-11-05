@@ -2,12 +2,13 @@ import React from 'react';
 import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
-import useItemState from '../components/useItemState';
+// import useItemState from '../components/useItemState';
+ import useItemState from '../components/useItemStateImmer';
 // import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Index() {
-  const { items, addItem, deleteItem } = useItemState([])
+  const { items, addItem, deleteItem, updateItem } = useItemState([])
 
   return (
     <Layout>
@@ -22,7 +23,7 @@ export default function Index() {
           }
         }}
       />
-      <ItemList items={items} deleteItem={ deleteItem } />
+      <ItemList items={items} deleteItem={ deleteItem } updateItem={updateItem} />
     </Layout>
   );
 }
