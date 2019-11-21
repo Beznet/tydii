@@ -2,8 +2,8 @@ import React from 'react';
 import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
-// import useItemState from '../components/useItemState';
- import useItemState from '../components/useItemStateImmer';
+import useItemState from '../components/useItemState';
+//  import useItemState from '../components/useItemStateImmer';
 // import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,6 +16,7 @@ export default function Index() {
       
       <ItemForm
         saveItem={ itemText => {
+          console.log(itemText)
           const trimmedText = itemText.trim();
 
           if(trimmedText.length > 0) {

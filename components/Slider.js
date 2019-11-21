@@ -8,13 +8,13 @@ const Slider = ({value, onValueChange}) => {
   return (
     <>
       <input
-      type="range" 
-      className="slider" 
+      type="range"
+      className="slider"
       name="customRange"
       value={value}
-      onChange={onChange} 
-      min="1" 
-      max="5" 
+      onChange={onChange}
+      min="1"
+      max="5"
     />
     <p>Item Rating: {value}</p>
   </>

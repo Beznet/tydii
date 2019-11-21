@@ -37,8 +37,6 @@ const updateItem = (items, updatedItem) => {
 
 export default (initialValue) => {
   const [items, setItems] = useState(initialValue);
-
-  console.log(items)
   
   return {
     items,
