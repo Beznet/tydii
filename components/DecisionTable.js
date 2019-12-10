@@ -1,44 +1,34 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 
-const DecisionTable = ({items}) => {
-  const keep = [];
-  const donate = [];
-  
+function DonateItems ({items}) {
+  const donateArray = [];
+
   for (const item of items) {
-    if (item.rating <= 3) {
-      donate.push(item)
-    } else {
-      keep.push(item)
+    if (item.rating<=3) {
+      donateArray.push(item)
     }
   }
 
-  console.log('keep', keep, 'donate', donate)
+  let donateResults = (
+    donateArray.map(item => (
+      <p>{item.name}</p>
+    ))
+  )
+  
+  return (
+    donateResults
+  )
+}
+
+const DecisionTable = ({items}) => {
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Donate</th>
-          <th>Keep</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-        </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
-        </tr>
-        <tr>
-          <td>Larry</td>
-          <td>the Bird</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
+    <>
+      <h3>Items to donate...</h3>
+      <DonateItems items={items} />
+    </>
+  )
 }
 
 export default DecisionTable;
