@@ -1,5 +1,4 @@
 import React from 'react';
-import { Table } from 'reactstrap';
 
 function DonateItems ({items}) {
   const donateArray = [];
