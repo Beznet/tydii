@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint":"./node_modules/.bin/eslint"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,7 @@
     "reactstrap": "^8.1.1",
     "uniqid": "^5.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.7.2"
+  }
 }
