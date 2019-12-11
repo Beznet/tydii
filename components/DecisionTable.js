@@ -15,21 +15,32 @@ function DonateItems ({items}) {
       <p>{item.name}</p>
     ))
   )
+
+  let decisionText = () => {
+    if (!donateArray.length) {
+      return "No items to donate"
+    } 
+    return "Items to donate..."
+  }
   
   return (
-    donateResults
+    <>
+      <div>
+        <h3>{decisionText()}</h3>
+        {donateResults}
+      </div>
+    </>
   )
 }
 
 const DecisionTable = ({items}) => {
   let [toggled, setToggle] = useState(false)
-  console.log(toggled)
+  console.log(!toggled)
 
   return (
     <>
       <Button onClick={() => { setToggle(!toggled) }}> Analyze </Button>
-      <div className={toggled ? "d-none": ""}>
-        <h3>Items to donate...</h3>
+      <div className={!toggled ? "d-none": ""}>
         <DonateItems items={items} />
       </div>
     </>
