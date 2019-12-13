@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "export": "next export",
+    "deploy": "npm run build && npm run export",
     "start": "next start",
     "lint:js": "standard --verbose | snazzy",
     "lint:js:fix": "standard --verbose --fix | snazzy",
