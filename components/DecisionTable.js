@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Button } from 'reactstrap';
+import React, { useState } from 'react'
+import { Button } from 'reactstrap'
  
 function DonateItems ({items}) {
-  const donateArray = [];
+  const donateArray = []
 
   for (const item of items) {
     if (item.rating<=3) {

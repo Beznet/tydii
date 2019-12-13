@@ -4,12 +4,12 @@ import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
 import useItemState from '../components/useItemState';
 import DecisionTable from '../components/DecisionTable';
+import { Button } from 'reactstrap';
 //  import useItemState from '../components/useItemStateImmer';
-// import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Index() {
-  const { items, addItem, deleteItem, updateItem } = useItemState([])
+  const { items, addItem, deleteItem, updateItem, resetAll } = useItemState([])
 
   return (
     <Layout>
@@ -17,7 +17,6 @@ export default function Index() {
       
       <ItemForm
         saveItem={ itemText => {
-          console.log(itemText)
           const trimmedText = itemText.trim();
 
           if(trimmedText.length > 0) {
@@ -26,6 +25,7 @@ export default function Index() {
         }}
       />
       <ItemList items={items} deleteItem={ deleteItem } updateItem={updateItem} />
+      <Button onClick={resetAll}>Reset</Button>
       <DecisionTable items={items} />
     </Layout>
   );

@@ -8,7 +8,6 @@ import Slider from './Slider';
 const ItemList = ({ items, deleteItem, updateItem }) => {
 
   const renderItems = () => items.map(item => {
-    const deleteHandler = () => deleteItem(item.id)
     const updateValueHandler = (rating) => updateItem(Object.assign({}, item, {rating}))
 
     return (

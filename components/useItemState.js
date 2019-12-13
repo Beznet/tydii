@@ -51,6 +51,9 @@ export default (initialValue) => {
       const newItems = items.filter(item => item.id !== id)
 
       setItems(newItems)
+    },
+    resetAll: () => {
+      setItems([])
     }
   }
 
