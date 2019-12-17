@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/style.css'
 import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList'; 
@@ -13,10 +14,16 @@ export default function Index() {
 
   return (
     <Layout>
-      <Container className='pt-3'>
-      <Row xs='3'>
-        <Col></Col>
+      <Container className='container-fluid pt-3 blue'>
+      <Row>
         <Col>
+        <h3>How to use?</h3>
+            <p>
+              This section will have text about how to use the app but I am doing this for example purposes and I should have used Ipsum Lorem or whatever. 
+              I will use this for now because I am typing the words I enjoy most lol.
+            </p>
+        </Col>
+        <Col xs='6'>
           <ItemForm
             saveItem={ itemText => {
               const trimmedText = itemText.trim();
@@ -30,7 +37,8 @@ export default function Index() {
           <Button onClick={resetAll}>Reset</Button>
           <DecisionTable items={items} />
         </Col>
-        <Col></Col>
+        <Col>
+        </Col>
       </Row>
       </Container>
     </Layout>

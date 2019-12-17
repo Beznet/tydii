@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CustomInput, Button } from 'reactstrap';
+import { Button, ListGroup, ListGroupItem, ListGroupItemText } from 'reactstrap';
 import Slider from './Slider';
 
 /**
@@ -11,20 +11,19 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
     const updateValueHandler = (rating) => updateItem(Object.assign({}, item, {rating}))
 
     return (
-      <li>
-        <p>{item.name}</p>
-        <Button onClick={()=> deleteItem(item.id)}>
-          Delete Item
+      <ListGroupItem className='w-75'>
+        <ListGroupItemText className='d-inline'>{item.name}</ListGroupItemText>
+        <Button close onClick={()=> deleteItem(item.id)}>
         </Button>
         <Slider value={item.rating} onValueChange={updateValueHandler}/>
-      </li>
+      </ListGroupItem>
     )
   })
 
   return (
-    <ul>
+    <ListGroup className='justify-content-center'>
       {renderItems()}
-    </ul>
+    </ListGroup>
   )
 }
 

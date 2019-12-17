@@ -6,10 +6,11 @@ const linkStyle = {
 };
 
 const Header = () => (
-  <Col>
     <Row className='border-bottom'>
       <Col>
-        <h3>Min App</h3>
+      </Col>
+      <Col className='text-center'>
+        <h1>Minlo</h1>
       </Col>
       <Col className='text-right'>
         <Link href="/">
@@ -20,7 +21,6 @@ const Header = () => (
         </Link>
       </Col>
     </Row>
-  </Col>
 );
 
 export default Header;

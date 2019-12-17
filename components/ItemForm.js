@@ -11,21 +11,20 @@ const ItemForm = ({saveItem}) => {
   }
 
   return (
-    <Row>
-      <Form
-        onSubmit={itemSubmit}
-      >
-      <FormGroup>
-        <Input 
-          id="inputItem"
-          placeholder="item input"
-          onChange={onChange}
-          value={value}
-        />
-        <Button onClick={itemSubmit}>Submit</Button>
-      </FormGroup>
-      </Form>
-    </Row>
+        <Form
+          onSubmit={itemSubmit}
+        >
+        <FormGroup className='input-group'>
+          <Input
+            id='inputItem'
+            placeholder='Add Your Items Here'
+            bsSize='lg'
+            onChange={onChange}
+            value={value}
+          />
+          <Button onClick={itemSubmit}>Add</Button>
+        </FormGroup>
+        </Form>
   )
 }
 
