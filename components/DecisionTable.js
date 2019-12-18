@@ -12,21 +12,21 @@ function DonateItems ({items}) {
 
   let donateResults = (
     donateArray.map(item => (
-      <p>{item.name}</p>
+      <p><i><u>{item.name}</u></i></p>
     ))
   )
 
   let decisionText = () => {
     if (!donateArray.length) {
-      return "No items to donate"
+      return "You enjoy all the things! Maybe think a bit harder..."
     } 
-    return "Items to donate..."
+    return "Consider donating or selling these items..."
   }
   
   return (
     <>
       <div>
-        <h3>{decisionText()}</h3>
+        <h4>{decisionText()}</h4>
         {donateResults}
       </div>
     </>
@@ -39,9 +39,9 @@ const DecisionTable = ({items}) => {
 
   return (
     <>
-      <Button onClick={() => { setToggle(!toggled) }}> Analyze </Button>
+      <Button color="success" onClick={() => { setToggle(!toggled) }}> Analyze </Button>
       <div className={!toggled ? "d-none": ""}>
-        <DonateItems items={items} />
+        <DonateItems className='mt-2'items={items} />
       </div>
     </>
   )

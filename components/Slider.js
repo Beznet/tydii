@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'reactstrap'
 
 const Slider = ({value, onValueChange}) => {
   const onChange = e => {
@@ -7,6 +8,7 @@ const Slider = ({value, onValueChange}) => {
 
   return (
     <>
+    <div className='d-inline-block mr-2'>
       <input
       type="range"
       className="slider"
@@ -16,7 +18,9 @@ const Slider = ({value, onValueChange}) => {
       min="1"
       max="5"
     />
-    <p>Item Rating: {value}</p>
+  </div>
+  {/* <div className='d-inline-block'>{value}</div> */}
+  <span className="badge badge-primary badge-pill">{value}</span>
   </>
   )
 }

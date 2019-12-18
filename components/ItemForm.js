@@ -22,7 +22,7 @@ const ItemForm = ({saveItem}) => {
             onChange={onChange}
             value={value}
           />
-          <Button onClick={itemSubmit}>Add</Button>
+          <Button color="primary" onClick={itemSubmit}>Add</Button>
         </FormGroup>
         </Form>
   )
