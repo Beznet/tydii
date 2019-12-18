@@ -10,7 +10,7 @@ const Header = () => (
       <Col>
       </Col>
       <Col className='text-center'>
-        <h1>Minlo</h1>
+        <h1>Tydi App</h1>
       </Col>
       <Col className='text-right'>
         <Link href="/">
