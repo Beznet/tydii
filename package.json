@@ -8,13 +8,8 @@
     "build": "next build",
     "export": "next export",
     "deploy": "npm run build && npm run export",
-    "start": "next start",
-    "lint:js": "standard --verbose | snazzy",
-    "lint:js:fix": "standard --verbose --fix | snazzy",
-    "lint:style": "stylelint 'styles/**/*.scss'",
-    "lint:style:fix": "stylelint 'styles/**/*.scss' --fix",
-    "lint": "npm run lint:js && npm run lint:style",
-    "lint:fix": "npm run lint:js:fix && npm run lint:style:fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
@@ -31,13 +26,17 @@
     "uniqid": "^5.2.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.7.0",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.5",
     "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.19.1"
   }
 }
