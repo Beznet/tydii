@@ -5,5 +5,5 @@ export default function About() {
     <Layout>
       <p>About</p>
     </Layout>
-  )
+  );
 }

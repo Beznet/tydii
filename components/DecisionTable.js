@@ -48,7 +48,7 @@ const DecisionTable = ({ items }) => {
         }}
       >
         {' '}
-        Analyze{' '}
+        Tydi Up!{' '}
       </Button>
       <div className={!toggled ? 'd-none' : ''}>
         <DonateItems className="mt-2" items={items} />
