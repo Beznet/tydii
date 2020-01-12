@@ -6,6 +6,10 @@
   font-size: 200px;
 }
 
+.face-img {
+  width: 35px;
+}
+
 .bounce {
   animation: bounce 0.2s;
 }

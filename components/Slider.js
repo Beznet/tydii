@@ -24,13 +24,11 @@ const Slider = ({ value, onValueChange }) => {
           name="customRange"
           value={value}
           onChange={onChange}
-          default="2"
           min="1"
           max="5"
         />
       </div>
-      <span className="badge badge-primary badge-pill">{value}</span>
-      <img src={faceImages[value]} alt="face-rating" />
+      <img className="face-img" src={faceImages[value]} alt="face-rating" />
     </>
   );
 };
