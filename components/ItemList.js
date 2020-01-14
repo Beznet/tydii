@@ -4,6 +4,8 @@ import {
   ListGroup,
   ListGroupItem,
   ListGroupItemText,
+  Col,
+  Row,
 } from 'reactstrap';
 import Slider from './Slider';
 
@@ -17,19 +19,27 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
         updateItem(Object.assign({}, item, { rating }));
 
       return (
-        <ListGroupItem>
-          <ListGroupItemText className="d-inline mr-5">
+        <>
+          <Col className="d-inline text-center mb-2" xs="4">
+            <Button
+              className="float-left"
+              close
+              onClick={() => deleteItem(item.id)}
+            />
             {item.name}
-          </ListGroupItemText>
-          <Button close onClick={() => deleteItem(item.id)} />
-          <Slider value={item.rating} onValueChange={updateValueHandler} />
-        </ListGroupItem>
+          </Col>
+          <Col className="d-inline text-center mb-2" xs="8">
+            <Slider
+              className="m-auto"
+              value={item.rating}
+              onValueChange={updateValueHandler}
+            />
+          </Col>
+        </>
       );
     });
 
-  return (
-    <ListGroup className="justify-content-center">{renderItems()}</ListGroup>
-  );
+  return <Row>{renderItems()}</Row>;
 };
 
 export default ItemList;

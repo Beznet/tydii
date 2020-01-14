@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'reactstrap';
+import { Button, Row, Col } from 'reactstrap';
 
 function DonateItems({ items }) {
   const donateArray = [];
@@ -31,23 +31,24 @@ function DonateItems({ items }) {
 
 const DecisionTable = ({ items }) => {
   const [toggled, setToggle] = useState(false);
-  console.log(!toggled);
 
   return (
-    <>
-      <Button
-        color="success"
-        onClick={() => {
-          setToggle(!toggled);
-        }}
-      >
-        {' '}
-        Tydi Up!{' '}
-      </Button>
-      <div className={!toggled ? 'd-none' : ''}>
-        <DonateItems className="mt-2" items={items} />
-      </div>
-    </>
+    <Row>
+      <Col className="text-center">
+        <Button
+          color="success"
+          onClick={() => {
+            setToggle(!toggled);
+          }}
+        >
+          {' '}
+          Tydi Up!{' '}
+        </Button>
+        <div className={!toggled ? 'd-none' : ''}>
+          <DonateItems className="mt-2" items={items} />
+        </div>
+      </Col>
+    </Row>
   );
 };
 
