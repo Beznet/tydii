@@ -7,11 +7,11 @@ const linkStyle = {
 
 const Header = () => (
   <Row className="border-bottom">
-    <Col></Col>
-    <Col className="text-center">
+    <Col sm="3"></Col>
+    <Col className="text-center" sm="6">
       <h1>Tydi App</h1>
     </Col>
-    <Col className="text-right">
+    <Col className="text-right" sm="3">
       <Link href="/">
         <a style={linkStyle}>Home</a>
       </Link>

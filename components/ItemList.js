@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   ListGroup,
   ListGroupItem,
   ListGroupItemText,
-  Row,
 } from 'reactstrap';
 import Slider from './Slider';
 
@@ -18,15 +17,13 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
         updateItem(Object.assign({}, item, { rating }));
 
       return (
-        <Row>
-          <ListGroupItem className="w-75">
-            <ListGroupItemText className="d-inline mr-5">
-              {item.name}
-            </ListGroupItemText>
-            <Button close onClick={() => deleteItem(item.id)} />
-            <Slider value={item.rating} onValueChange={updateValueHandler} />
-          </ListGroupItem>
-        </Row>
+        <ListGroupItem>
+          <ListGroupItemText className="d-inline mr-5">
+            {item.name}
+          </ListGroupItemText>
+          <Button close onClick={() => deleteItem(item.id)} />
+          <Slider value={item.rating} onValueChange={updateValueHandler} />
+        </ListGroupItem>
       );
     });
 

@@ -1,10 +1,11 @@
+import { Container } from 'reactstrap';
 import Header from './Header';
 
 const Layout = ({ children }) => (
-  <div>
+  <Container className="pt-3">
     <Header />
     {children}
-  </div>
+  </Container>
 );
 
 export default Layout;

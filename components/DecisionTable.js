@@ -10,13 +10,7 @@ function DonateItems({ items }) {
     }
   }
 
-  const donateResults = donateArray.map(item => (
-    <p>
-      <i>
-        <u>{item.name}</u>
-      </i>
-    </p>
-  ));
+  const donateResults = donateArray.map(item => <p>{item.name}</p>);
 
   const decisionText = () => {
     if (!donateArray.length) {
