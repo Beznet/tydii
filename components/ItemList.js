@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  ListGroup,
-  ListGroupItem,
-  ListGroupItemText,
-  Col,
-  Row,
-} from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 import Slider from './Slider';
 
 /**
@@ -20,13 +13,16 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
 
       return (
         <>
-          <Col className="d-inline text-center mb-2" xs="4">
+          <Col
+            className="d-inline text-center mb-2 text-wrap overflow-auto"
+            xs="4"
+          >
             <Button
               className="float-left"
               close
               onClick={() => deleteItem(item.id)}
             />
-            {item.name}
+            <h5>{item.name}</h5>
           </Col>
           <Col className="d-inline text-center mb-2" xs="8">
             <Slider

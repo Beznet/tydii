@@ -1,17 +1,27 @@
-.item-input {
-  width: 75%;
+html,
+body {
+  height: 100%;
 }
 
-.item-list {
-  font-size: 200px;
+#footer {
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+  height: 30px; /* Height of the footer */
+}
+
+.result-names {
+  text-shadow: 1px 1px 1px gray;
 }
 
 .face-img {
   width: 35px;
 }
 
-.container {
-  max-width: 100%;
+.header-border {
+  border-bottom: solid;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
 }
 
 .bounce {

@@ -16,14 +16,14 @@ function DonateItems({ items }) {
     if (!donateArray.length) {
       return 'You enjoy all the things! Maybe think a bit harder...';
     }
-    return 'Consider donating or selling these items...';
+    return 'Donate or sell these items:';
   };
 
   return (
     <>
       <div>
-        <h4>{decisionText()}</h4>
-        {donateResults}
+        <h3>{decisionText()}</h3>
+        <h5 className="result-names">{donateResults}</h5>
       </div>
     </>
   );
