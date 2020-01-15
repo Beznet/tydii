@@ -15,7 +15,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
         <>
           <Col
             className="d-inline text-center mb-2 text-wrap overflow-auto"
-            xs="4"
+            xs="5"
           >
             <Button
               className="float-left"
@@ -24,7 +24,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
             />
             <h5>{item.name}</h5>
           </Col>
-          <Col className="d-inline text-center mb-2" xs="8">
+          <Col className="d-inline text-center mb-2" xs="7">
             <Slider
               className="m-auto"
               value={item.rating}

@@ -1,16 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/style.css';
-import {
-  Badge,
-  Col,
-  Row,
-  Popover,
-  PopoverBody,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
+import { Badge, Col, Row, Popover, PopoverBody } from 'reactstrap';
 import Layout from '../components/Layout';
 import ItemForm from '../components/ItemForm';
 import ItemList from '../components/ItemList';
@@ -24,9 +14,6 @@ export default function Index() {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [donateDropdownOpen, setDonateDropdownOpen] = useState(false);
   const [sellDropdownOpen, setSellDropdownOpen] = useState(false);
-
-  const donateDropToggle = () => setDonateDropdownOpen(prevState => !prevState);
-  const sellDropToggle = () => setSellDropdownOpen(prevState => !prevState);
 
   const popToggle = () => setPopoverOpen(!popoverOpen);
 
@@ -68,42 +55,7 @@ export default function Index() {
           />
           <DecisionTable items={items} />
         </Col>
-        <Col md="3">
-          <h4>Resources</h4>
-          <Dropdown isOpen={donateDropdownOpen} toggle={donateDropToggle}>
-            <DropdownToggle caret>How do I donate my stuff?</DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem tag="a" href="https://www.goodwill.org/locator/">
-                Find your local Goodwill
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem
-                tag="a"
-                href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=335"
-              >
-                Guide to donating noncash items
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <Dropdown isOpen={sellDropdownOpen} toggle={sellDropToggle}>
-            <DropdownToggle caret>How do I sell my stuff?</DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem
-                tag="a"
-                href="https://www.ebay.com/help/selling/selling-guides-tips/selling?id=4081"
-              >
-                Guide to selling on Ebay
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem
-                tag="a"
-                href="https://www.facebook.com/marketplace/learn-more/"
-              >
-                Guide to selling on Facebook Marketplace
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </Col>
+        <Col md="3"></Col>
       </Row>
     </Layout>
   );

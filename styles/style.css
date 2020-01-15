@@ -5,7 +5,8 @@ body {
 
 #footer {
   bottom: 0;
-  position: fixed;
+  position: absolute;
+  float: left;
   width: 100vw;
   height: 30px; /* Height of the footer */
 }
