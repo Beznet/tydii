@@ -12,8 +12,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([]);
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const [donateDropdownOpen, setDonateDropdownOpen] = useState(false);
-  const [sellDropdownOpen, setSellDropdownOpen] = useState(false);
 
   const popToggle = () => setPopoverOpen(!popoverOpen);
 

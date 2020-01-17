@@ -1,6 +1,15 @@
-html,
+@import url('https://fonts.googleapis.com/css?family=Martel+Sans|Quicksand&display=swap');
+
 body {
   height: 100%;
+  background-color: hsl(210, 39.3%, 78%) !important;
+}
+
+.container {
+  font-family: 'Martel Sans', sans-serif;
+}
+.title {
+  font-family: 'Quicksand', sans-serif;
 }
 
 #footer {
@@ -21,8 +30,6 @@ body {
 
 .header-border {
   border-bottom: solid;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
 }
 
 .bounce {
