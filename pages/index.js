@@ -37,20 +37,22 @@ export default function Index() {
           </Popover>
         </Col>
         <Col className="align-items-center" md="6">
-          <ItemForm
-            saveItem={itemText => {
-              const trimmedText = itemText.trim();
+          <div className="form-box">
+            <ItemForm
+              saveItem={itemText => {
+                const trimmedText = itemText.trim();
 
-              if (trimmedText.length > 0) {
-                addItem(trimmedText);
-              }
-            }}
-          />
-          <ItemList
-            items={items}
-            deleteItem={deleteItem}
-            updateItem={updateItem}
-          />
+                if (trimmedText.length > 0) {
+                  addItem(trimmedText);
+                }
+              }}
+            />
+            <ItemList
+              items={items}
+              deleteItem={deleteItem}
+              updateItem={updateItem}
+            />
+          </div>
           <DecisionTable items={items} />
         </Col>
         <Col md="3"></Col>

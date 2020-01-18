@@ -12,6 +12,18 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+.form-box {
+  background: #cfd7ff;
+  color: #0a0a0a;
+  border: 1px solid #4e57ef;
+  box-shadow: 3px 3px 0px 0px #4e57ef;
+  height: 500px;
+}
+
+#inputItem {
+  max-width: 65%;
+}
+
 #footer {
   bottom: 0;
   position: absolute;
@@ -25,7 +37,7 @@ body {
 }
 
 .face-img {
-  width: 35px;
+  width: 45px;
 }
 
 .header-border {

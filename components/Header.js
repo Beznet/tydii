@@ -1,10 +1,10 @@
 import { Col, Row } from 'reactstrap';
 
 const Header = () => (
-  <Row className="header-border mb-4">
+  <Row className="mb-2 mt-5">
     <Col sm="3"></Col>
     <Col className="title text-center" sm="6">
-      <h1>Tydi App</h1>
+      <h1>Tydii</h1>
     </Col>
     <Col sm="3"></Col>
   </Row>

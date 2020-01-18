@@ -15,18 +15,18 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
         <>
           <Col
             className="d-inline text-center mb-2 text-wrap overflow-auto"
-            xs="5"
+            xs="6"
           >
             <Button
-              className="float-left"
+              className="float-left ml-3"
               close
               onClick={() => deleteItem(item.id)}
             />
             <h5>{item.name}</h5>
           </Col>
-          <Col className="d-inline text-center mb-2" xs="7">
+          <Col className="d-inline text-center mb-3 pr-5" xs="6">
             <Slider
-              className="m-auto"
+              className=""
               value={item.rating}
               onValueChange={updateValueHandler}
             />

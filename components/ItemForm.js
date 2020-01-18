@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Input } from 'reactstrap';
 import useInputState from './useInputState';
 
 const ItemForm = ({ saveItem }) => {
@@ -12,7 +12,7 @@ const ItemForm = ({ saveItem }) => {
 
   return (
     <Form onSubmit={itemSubmit}>
-      <FormGroup className="input-group">
+      <FormGroup className="input-group justify-content-center mt-3">
         <Input
           id="inputItem"
           placeholder="Add Your Items Here"
@@ -20,9 +20,14 @@ const ItemForm = ({ saveItem }) => {
           onChange={onChange}
           value={value}
         />
-        <Button color="primary" onClick={itemSubmit}>
+        <button
+          type="submit"
+          className="ml-2"
+          color="primary"
+          onClick={itemSubmit}
+        >
           Add
-        </Button>
+        </button>
       </FormGroup>
     </Form>
   );
