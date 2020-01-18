@@ -17,7 +17,7 @@ body {
   color: #0a0a0a;
   border: 1px solid #4e57ef;
   box-shadow: 3px 3px 0px 0px #4e57ef;
-  height: 500px;
+  min-height: 500px;
 }
 
 #inputItem {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'reactstrap';
+import { CustomInput } from 'reactstrap';
 
 const faceImages = [
   '',
@@ -18,7 +18,7 @@ const Slider = ({ value, onValueChange }) => {
   return (
     <>
       <div className="d-inline-block mr-2">
-        <input
+        <CustomInput
           type="range"
           className="slider"
           name="customRange"
