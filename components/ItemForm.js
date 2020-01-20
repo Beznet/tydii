@@ -15,7 +15,7 @@ const ItemForm = ({ saveItem }) => {
       <FormGroup className="input-group justify-content-center mt-3">
         <Input
           id="inputItem"
-          placeholder="Add Your Items Here"
+          placeholder="Add Items"
           bsSize="lg"
           onChange={onChange}
           value={value}

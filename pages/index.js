@@ -19,7 +19,8 @@ export default function Index() {
     <Layout>
       <base target="_blank" />
       <Row>
-        <Col className="align-items-center" md="3">
+        <Col lg="3"></Col>
+        <Col className="align-items-center" lg="6">
           <Badge color="info" id="Popover1">
             How do I use this?
           </Badge>
@@ -35,8 +36,6 @@ export default function Index() {
               you need to part ways with
             </PopoverBody>
           </Popover>
-        </Col>
-        <Col className="align-items-center" md="6">
           <div className="form-box">
             <ItemForm
               saveItem={itemText => {
@@ -55,7 +54,7 @@ export default function Index() {
           </div>
           <DecisionTable items={items} />
         </Col>
-        <Col md="3"></Col>
+        <Col lg="3"></Col>
       </Row>
     </Layout>
   );

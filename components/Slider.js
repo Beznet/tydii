@@ -17,7 +17,7 @@ const Slider = ({ value, onValueChange }) => {
 
   return (
     <>
-      <div className="d-inline-block mr-2">
+      <div className="d-inline-block mr-sm-3">
         <CustomInput
           type="range"
           className="slider"

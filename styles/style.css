@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Martel+Sans|Quicksand&display=swap');
 
+html,
 body {
-  height: 100%;
   background-color: hsl(210, 39.3%, 78%) !important;
+  min-height: 100%;
 }
 
 .container {
@@ -16,7 +17,7 @@ body {
   background: #cfd7ff;
   color: #0a0a0a;
   border: 1px solid #4e57ef;
-  box-shadow: 3px 3px 0px 0px #4e57ef;
+  box-shadow: 7px 7px 0px 0px #4e57ef;
   min-height: 500px;
 }
 
@@ -25,15 +26,17 @@ body {
 }
 
 #footer {
-  bottom: 0;
-  position: absolute;
-  float: left;
-  width: 100vw;
+  position: relative;
+  top: 10vh;
+  left: 0;
   height: 30px; /* Height of the footer */
 }
 
 .result-names {
   text-shadow: 1px 1px 1px gray;
+}
+
+.slider-face {
 }
 
 .face-img {
@@ -57,5 +60,20 @@ body {
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+
+@media (max-width: 768px) {
+  .face-img {
+    width: 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slider-face {
+    margin-left: 5px;
+  }
+  #close-button {
+    margin-left: 10px;
   }
 }

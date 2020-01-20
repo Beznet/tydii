@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <>
-    <Container className="container pt-3">
+    <Container className="container pt-3 clearfix">
       <Header />
       {children}
     </Container>

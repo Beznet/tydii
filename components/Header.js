@@ -1,7 +1,7 @@
 import { Col, Row } from 'reactstrap';
 
 const Header = () => (
-  <Row className="mb-2 mt-5">
+  <Row className="mb-2 mt-sm-5">
     <Col sm="3"></Col>
     <Col className="title text-center" sm="6">
       <h1>Tydii</h1>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Col, Row } from 'reactstrap';
 
 const Footer = () => (
-  <Row id="footer" className="mb-2">
+  <Row className="mb-2 no-gutters" id="footer">
     <Col className="ml-3" sm="3">
       <Link href="/about">
         <a>about</a>
@@ -12,8 +12,6 @@ const Footer = () => (
         <a>github</a>
       </Link>
     </Col>
-    <Col sm="6"></Col>
-    <Col sm="3"></Col>
   </Row>
 );
 

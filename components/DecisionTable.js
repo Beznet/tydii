@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 function DonateItems({ items }) {
   const donateArray = [];
@@ -34,16 +34,15 @@ const DecisionTable = ({ items }) => {
 
   return (
     <Row>
-      <Col className="text-center">
-        <Button
-          color="success"
+      <Col className="text-center mt-3">
+        <button
+          type="submit"
           onClick={() => {
             setToggle(!toggled);
           }}
         >
-          {' '}
-          Tydi Up!{' '}
-        </Button>
+          Tydi Up!
+        </button>
         <div className={!toggled ? 'd-none' : ''}>
           <DonateItems className="mt-2" items={items} />
         </div>

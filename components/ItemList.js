@@ -13,18 +13,21 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
 
       return (
         <>
-          <Col
-            className="d-inline text-center mb-2 text-wrap overflow-auto"
-            xs="6"
-          >
+          <Col xs="1">
             <Button
-              className="float-left ml-3"
+              id="close-button"
+              className="float-left ml-sm-4"
               close
               onClick={() => deleteItem(item.id)}
             />
+          </Col>
+          <Col className="d-inline mb-2 text-wrap" xs="3">
             <h5>{item.name}</h5>
           </Col>
-          <Col className="d-inline text-center mb-3 pr-5" xs="6">
+          <Col
+            className="slider-face no-gutters d-inline text-center mb-3"
+            xs="8"
+          >
             <Slider
               className=""
               value={item.rating}
@@ -35,7 +38,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
       );
     });
 
-  return <Row>{renderItems()}</Row>;
+  return <Row className="no-gutters">{renderItems()}</Row>;
 };
 
 export default ItemList;
