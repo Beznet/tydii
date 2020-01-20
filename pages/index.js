@@ -11,9 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([]);
-  const [popoverOpen, setPopoverOpen] = useState(false);
-
-  const popToggle = () => setPopoverOpen(!popoverOpen);
 
   return (
     <Layout>
@@ -21,21 +18,6 @@ export default function Index() {
       <Row>
         <Col lg="3"></Col>
         <Col className="align-items-center" lg="6">
-          <Badge color="info" id="Popover1">
-            How do I use this?
-          </Badge>
-          <Popover
-            placement="bottom"
-            isOpen={popoverOpen}
-            target="Popover1"
-            toggle={popToggle}
-          >
-            <PopoverBody>
-              Add items you're unsure of getting rid of. Rate them based on how
-              happy they make you. Click 'Analyze' when you're done to see what
-              you need to part ways with
-            </PopoverBody>
-          </Popover>
           <div className="form-box">
             <ItemForm
               saveItem={itemText => {

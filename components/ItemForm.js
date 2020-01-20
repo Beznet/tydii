@@ -15,15 +15,15 @@ const ItemForm = ({ saveItem }) => {
       <FormGroup className="input-group justify-content-center mt-3">
         <Input
           id="inputItem"
-          placeholder="Add Items"
+          placeholder="stuff goes here"
           bsSize="lg"
           onChange={onChange}
           value={value}
         />
         <button
           type="submit"
+          id="add-button"
           className="ml-2"
-          color="primary"
           onClick={itemSubmit}
         >
           Add

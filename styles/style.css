@@ -1,28 +1,74 @@
-@import url('https://fonts.googleapis.com/css?family=Martel+Sans|Quicksand&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Concert+One&display=swap');
+:root {
+  --smokey-white: hsl(0, 0%, 96.9%);
+  --main-bg-color: hsl(247.6, 63.2%, 82.9%);
+  --title-color: hsl(249, 13%, 30.2%);
+  --button-hover: hsl(259.7, 100%, 74.9%);
+}
 html,
 body {
-  background-color: hsl(210, 39.3%, 78%) !important;
+  background-color: var(--main-bg-color) !important;
   min-height: 100%;
 }
 
-.container {
-  font-family: 'Martel Sans', sans-serif;
+input[type='text'] {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border: 1px solid black;
 }
+
+button {
+  background-color: hsl(260.1, 100%, 65.5%);
+  color: var(--smokey-white);
+  font-weight: 900;
+}
+
 .title {
-  font-family: 'Quicksand', sans-serif;
+  color: var(--title-color);
+  font-size: 70px;
+  font-family: 'Concert One', cursive;
+}
+
+.placeholder-text {
+  font-family: 'Concert One', cursive;
+  color: #ababab;
+}
+
+.container {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .form-box {
-  background: #cfd7ff;
+  background: var(--smokey-white);
   color: #0a0a0a;
-  border: 1px solid #4e57ef;
-  box-shadow: 7px 7px 0px 0px #4e57ef;
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  box-shadow: 7px 7px 0px 0px hsl(246.9, 14.6%, 53.1%);
   min-height: 500px;
 }
 
 #inputItem {
   max-width: 65%;
+}
+
+#tydi-button {
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px 0px hsl(246.9, 14.6%, 53.1%);
+}
+
+#add-button {
+  width: 70px;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px 0px hsl(246.9, 14.6%, 53.1%);
+}
+
+#tydi-button:hover,
+#add-button:hover {
+  background-color: var(--button-hover);
+  transition: background-color 200ms;
 }
 
 #footer {

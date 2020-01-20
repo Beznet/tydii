@@ -38,6 +38,7 @@ const DecisionTable = ({ items }) => {
     <Row>
       <Col className="text-center mt-3">
         <button
+          id="tydi-button"
           type="submit"
           onClick={() => {
             setToggle(!toggled);
