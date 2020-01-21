@@ -11,8 +11,8 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
       <Col className="placeholder-text m-4 text-center">
         <h3>How to use:</h3>
         <h4>
-          Add items you're unsure about keeping. Think about each one
-          individually, then rate them on how happy it makes you feel.
+          Add items you're unsure about keeping. Think about each one then rate
+          that item on how happy it makes you feel.
         </h4>
       </Col>
     ) : (

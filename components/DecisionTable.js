@@ -7,7 +7,9 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Spinner,
 } from 'reactstrap';
+import Link from 'next/link';
 
 function DonateItems({ items }) {
   const donateArray = [];
@@ -37,25 +39,31 @@ const DecisionTable = ({ items }) => {
   return (
     <Row>
       <Col className="text-center mt-3">
-        <button
-          id="tydi-button"
-          type="submit"
-          onClick={() => {
-            setToggle(!toggled);
-          }}
-        >
-          Tydi Up!
-        </button>
+        {!toggled ? (
+          <button
+            id="tydi-button"
+            type="submit"
+            onClick={() => {
+              setToggle(!toggled);
+            }}
+          >
+            Tydi Up!
+          </button>
+        ) : (
+          <Spinner color="hsl(249, 13%, 30.2%)" />
+        )}
         <Modal
           isOpen={toggled}
-          modalTransition={{ timeout: 2000 }}
+          centered
+          modalTransition={{ timeout: 1500 }}
+          backdropTransition={{ timeout: 1500 }}
           toggle={toggle}
           className=""
         >
           <ModalHeader toggle={toggle}>Get rid of these items...</ModalHeader>
           <ModalBody>
             {items.length === 0 ? (
-              'You like everything'
+              "There's nothing here"
             ) : (
               <div>
                 <DonateItems items={items} />
@@ -63,12 +71,15 @@ const DecisionTable = ({ items }) => {
             )}
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={toggle}>
-              Do Something
-            </Button>{' '}
-            <Button color="secondary" onClick={toggle}>
+            <a target="blank" href="/resources">
+              <button type="button">Sell my stuff!</button>
+            </a>
+            <a target="blank" href="/resources">
+              <button type="button">Donate my stuff!</button>
+            </a>
+            <button id="cancel-button" type="button" onClick={toggle}>
               Cancel
-            </Button>
+            </button>
           </ModalFooter>
         </Modal>
       </Col>

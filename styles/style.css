@@ -11,6 +11,11 @@ body {
   min-height: 100%;
 }
 
+p,
+h5 {
+  color: var(--title-color);
+}
+
 input[type='text'] {
   border: 0;
   outline: 0;
@@ -45,6 +50,13 @@ button {
   border: 1px solid hsl(246.9, 14.6%, 53.1%);
   box-shadow: 7px 7px 0px 0px hsl(246.9, 14.6%, 53.1%);
   min-height: 500px;
+}
+
+.list-group {
+  background: var(--smokey-white);
+  color: #0a0a0a;
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  box-shadow: 7px 7px 0px 0px hsl(246.9, 14.6%, 53.1%);
 }
 
 #inputItem {
@@ -84,6 +96,7 @@ button {
 
 .face-img {
   width: 45px;
+  filter: opacity(75%);
 }
 
 .header-border {
