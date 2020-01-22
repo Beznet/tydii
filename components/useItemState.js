@@ -48,7 +48,6 @@ export default initialValue => {
     },
     deleteItem: id => {
       const newItems = items.filter(item => item.id !== id);
-
       setItems(newItems);
     },
   };
