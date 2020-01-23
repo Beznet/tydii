@@ -71,12 +71,16 @@ const DecisionTable = ({ items }) => {
             )}
           </ModalBody>
           <ModalFooter>
-            <a target="blank" href="/resources">
-              <button type="button">Sell my stuff!</button>
-            </a>
-            <a target="blank" href="/resources">
-              <button type="button">Donate my stuff!</button>
-            </a>
+            <Link>
+              <a href="/resources">
+                <button type="button">Sell my stuff!</button>
+              </a>
+            </Link>
+            <Link>
+              <a href="/resources">
+                <button type="button">Donate my stuff!</button>
+              </a>
+            </Link>
             <button id="cancel-button" type="button" onClick={toggle}>
               Cancel
             </button>

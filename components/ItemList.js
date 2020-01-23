@@ -34,7 +34,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
                   }}
                 />
               </Col>
-              <Col className="d-inline mb-2 text-wrap" xs="3">
+              <Col className="text-center d-inline mb-2 text-wrap" xs="3">
                 <h5>{item.name}</h5>
               </Col>
               <Col
