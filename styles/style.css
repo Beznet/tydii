@@ -4,6 +4,7 @@
   --main-bg-color: hsl(247.6, 63.2%, 82.9%);
   --title-color: hsl(249, 13%, 30.2%);
   --button-hover: hsl(259.7, 100%, 74.9%);
+  --button-color: hsl(260.1, 100%, 65.5%);
 }
 html,
 body {
@@ -24,7 +25,7 @@ input[type='text'] {
 }
 
 button {
-  background-color: hsl(260.1, 100%, 65.5%);
+  background-color: var(--button-color);
   color: var(--smokey-white);
   font-weight: 900;
 }
@@ -32,6 +33,10 @@ button {
 .title {
   color: var(--title-color);
   font-size: 70px;
+  font-family: 'Concert One', cursive;
+}
+
+.rid-text {
   font-family: 'Concert One', cursive;
 }
 
@@ -75,6 +80,32 @@ button {
   }
 }
 
+.decision-button {
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px 0px hsl(246.9, 14.6%, 53.1%);
+}
+
+.flipped-sweep {
+  transform: scaleX(-1);
+}
+
+.decision-text {
+}
+
+.quote {
+  font-size: 0.9em;
+}
+
+#cancel-button {
+  background-color: lightgray;
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px 0px hsl(246.9, 14.6%, 53.1%);
+}
+
 #inputItem {
   max-width: 65%;
 }
@@ -110,6 +141,10 @@ button {
   text-shadow: 1px 1px 1px gray;
 }
 
+img {
+  width: 45px;
+}
+
 .face-img {
   width: 45px;
   filter: opacity(75%);
@@ -136,6 +171,10 @@ button {
 }
 
 @media (max-width: 768px) {
+  .broom {
+    width: 35px;
+    height: 35px;
+  }
   .face-img {
     width: 35px;
   }
