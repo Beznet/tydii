@@ -21,7 +21,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
           updateItem(Object.assign({}, item, { rating }));
 
         return (
-          <Col xs="12">
+          <Col className="d-flex-inline" xs="12">
             <Row className="item">
               <Col xs="1">
                 <Button
@@ -34,13 +34,10 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
                   }}
                 />
               </Col>
-              <Col className="text-center d-inline mb-2 text-wrap" xs="3">
+              <Col className="text-center mb-2 text-break" xs="5">
                 <h5>{item.name}</h5>
               </Col>
-              <Col
-                className="slider-face no-gutters d-inline text-center mb-3"
-                xs="8"
-              >
+              <Col className="slider-face text-center mb-3 ml-0 px-sm-0" xs="6">
                 <Slider
                   className=""
                   value={item.rating}

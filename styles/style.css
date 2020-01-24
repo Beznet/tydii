@@ -36,7 +36,12 @@ button {
   font-family: 'Concert One', cursive;
 }
 
+.slider {
+  margin-right: 1rem;
+}
+
 .rid-text {
+  color: var(--title-color);
   font-family: 'Concert One', cursive;
 }
 
@@ -148,6 +153,7 @@ img {
 .face-img {
   width: 45px;
   filter: opacity(75%);
+  margin-top: -5px;
 }
 
 .header-border {
@@ -181,6 +187,10 @@ img {
 }
 
 @media (max-width: 576px) {
+  .slider {
+    width: 70%;
+    margin-right: 5px;
+  }
   .slider-face {
     margin-left: 5px;
   }

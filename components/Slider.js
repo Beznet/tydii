@@ -17,10 +17,9 @@ const Slider = ({ value, onValueChange }) => {
 
   return (
     <>
-      <div className="d-inline-block mr-3">
+      <div className="slider d-inline-block">
         <CustomInput
           type="range"
-          className="slider"
           name="customRange"
           value={value}
           onChange={onChange}
@@ -28,7 +27,11 @@ const Slider = ({ value, onValueChange }) => {
           max="5"
         />
       </div>
-      <img className="face-img" src={faceImages[value]} alt="face-rating" />
+      <img
+        className="face-img pt-n2"
+        src={faceImages[value]}
+        alt="face-rating"
+      />
     </>
   );
 };
