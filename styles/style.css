@@ -218,7 +218,7 @@ input[type='range']::-moz-range-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #ac51b5;
+  background: var(--main-bg-color);
   border-radius: 25px;
   border: 0px solid #000101;
 }
@@ -228,7 +228,7 @@ input[type='range']::-moz-range-thumb {
   height: 15px;
   width: 15px;
   border-radius: 50%;
-  background: #65001c;
+  background: var(--cta-color);
   cursor: pointer;
 }
 input[type='range']::-ms-track {
