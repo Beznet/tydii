@@ -37,7 +37,10 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
               <Col className="text-center mb-2 text-break" xs="5">
                 <h5>{item.name}</h5>
               </Col>
-              <Col className="slider-face text-center mb-3 ml-0 px-sm-0" xs="6">
+              <Col
+                className="slider-face d-inline-block mb-3 ml-0 px-sm-0"
+                xs="6"
+              >
                 <Slider
                   className=""
                   value={item.rating}

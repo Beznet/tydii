@@ -1,5 +1,4 @@
 import React from 'react';
-import { CustomInput } from 'reactstrap';
 
 const faceImages = [
   '',
@@ -17,16 +16,7 @@ const Slider = ({ value, onValueChange }) => {
 
   return (
     <>
-      <div className="slider d-inline-block">
-        <CustomInput
-          type="range"
-          name="customRange"
-          value={value}
-          onChange={onChange}
-          min="1"
-          max="5"
-        />
-      </div>
+      <input type="range" value={value} onChange={onChange} min="1" max="5" />
       <img
         className="face-img pt-n2"
         src={faceImages[value]}
