@@ -1,22 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Concert+One&display=swap');
 :root {
-  /* PURPLE AND ORANGE
-  --smokey-white: hsl(0, 0%, 96.9%);
-  --main-bg-color: hsl(247.6, 63.2%, 82.9%);
-  --title-color: hsl(249, 13%, 30.2%);
-  --button-hover: hsl(259.7, 100%, 74.9%);
-  --button-color: hsl(260.1, 100%, 65.5%);
-  --cta-color: hsl(20.1, 100%, 65.5%); 
-  */
-
-  /* BABY BLUE AND PURPLE
-  --smokey-white: hsl(0, 0%, 96.9%);
-  --main-bg-color: #bae5ff;
-  --title-color: hsl(249, 13%, 30.2%);
-  --button-hover: #dab7ff;
-  --button-color: #da8aff;
-  --cta-color: #da8aff; 
-  */
   --smokey-white: #f9f9f9;
   --main-bg-color: #f1fcfb;
   --title-color: #384443;
@@ -24,10 +7,15 @@
   --button-color: #66b3ac;
   --cta-color: #66b3ac;
 }
-html,
+
+html {
+  height: 100%;
+}
+
 body {
   background-color: var(--main-bg-color) !important;
   min-height: 100%;
+  position: relative;
 }
 
 p,
@@ -71,6 +59,12 @@ h1 span {
   }
 }
 
+#footer a img {
+  width: 25px;
+  margin: 5px;
+  opacity: 75%;
+}
+
 .rid-text {
   color: var(--title-color);
   font-family: 'Concert One', cursive;
@@ -83,6 +77,8 @@ h1 span {
 
 .container {
   font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  overflow: auto;
 }
 
 .form-box {
@@ -91,6 +87,12 @@ h1 span {
   border: 1px solid hsl(246.9, 14.6%, 53.1%);
   box-shadow: 7px 7px 0px 0px #888888;
   min-height: 500px;
+}
+
+.list-group {
+  background: var(--smokey-white);
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  box-shadow: 7px 7px 0px 0px #888888;
 }
 
 .item {
@@ -164,9 +166,10 @@ h1 span {
 
 #footer {
   position: relative;
-  top: 10vh;
   left: 0;
-  height: 30px; /* Height of the footer */
+  bottom: 0;
+  right: 0;
+  height: 30px;
 }
 
 .result-names {
@@ -175,6 +178,10 @@ h1 span {
 
 img {
   width: 45px;
+}
+
+.clearFloat {
+  clear: both;
 }
 
 .face-img {

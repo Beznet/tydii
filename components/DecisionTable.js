@@ -56,8 +56,8 @@ const DecisionTable = ({ items }) => {
         <Modal
           isOpen={toggled}
           centered
-          // modalTransition={{ timeout: 1500 }}
-          // backdropTransition={{ timeout: 1500 }}
+          modalTransition={{ timeout: 500 }}
+          backdropTransition={{ timeout: 500 }}
           toggle={toggle}
           className=""
         >

@@ -1,4 +1,4 @@
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import Header from './Header';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +10,8 @@ const Layout = ({ children }) => (
       <base target="_blank" />
       <Header />
       {children}
+      <Footer />
     </Container>
-    <Footer />
   </>
 );
 

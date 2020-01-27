@@ -38,7 +38,7 @@ export default function Resources() {
             </ListGroupItem>
           </ListGroup>
         </Col>
-        <Col sm="6">
+        <Col sm="6" className="mt-3 mt-sm-0">
           {' '}
           <h3 className="text-center">I want to sell my stuff</h3>
           <ListGroup>
