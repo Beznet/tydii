@@ -2,11 +2,11 @@ import React from 'react';
 
 const faceImages = [
   '',
-  '/sad-1.png',
-  '/meh.png',
-  '/comfort.png',
-  '/happy-3.png',
-  '/love.png',
+  '/meh-face.png',
+  '/thinking-face.png',
+  '/smirk-face.png',
+  '/smile-face.png',
+  '/love-face.png',
 ];
 
 const Slider = ({ value, onValueChange }) => {
