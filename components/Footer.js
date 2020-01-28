@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { Col, Row } from 'reactstrap';
 
-const Footer = () => (
-  <Row className="mb-2" id="footer">
+const Footer = ({ className }) => (
+  <Row className={className} id="footer">
     <Col className="ml-3 align-items-start w-100" xs="6">
       <Link href="/about">
         <a>

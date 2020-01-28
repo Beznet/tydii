@@ -6,11 +6,11 @@ import '../styles/style.css';
 
 const Layout = ({ children }) => (
   <>
-    <Container className="container pt-3 clearfix">
+    <Container className="container pt-3 clearfix d-flex flex-column">
       <base target="_blank" />
       <Header />
       {children}
-      <Footer />
+      <Footer className="mb-2 mt-auto" />
     </Container>
   </>
 );
