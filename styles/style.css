@@ -59,6 +59,11 @@ h1 span {
   }
 }
 
+#close-button {
+  position: relative;
+  z-index: 999;
+}
+
 #footer a img {
   width: 25px;
   margin: 5px;
@@ -97,6 +102,10 @@ h1 span {
 
 .item {
   animation: item-flop 0.2s;
+}
+
+span ul {
+  font-size: 10px;
 }
 
 @keyframes item-flop {
@@ -309,6 +318,8 @@ input[type='range']:focus::-ms-fill-upper {
     margin-left: 5px;
   }
   #close-button {
+    position: relative;
     margin-left: 10px;
+    z-index: 999;
   }
 }

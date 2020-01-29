@@ -30,7 +30,6 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
                   close
                   onClick={() => {
                     deleteItem(item.id);
-                    console.log('ass');
                   }}
                 />
               </Col>
