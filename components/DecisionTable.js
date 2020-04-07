@@ -48,7 +48,7 @@ const DecisionTable = ({ items }) => {
               setToggle(!toggled);
             }}
           >
-            Tydii Up!
+            Tydi Up!
           </button>
         ) : (
           <Spinner color="hsl(249, 13%, 30.2%)" />
