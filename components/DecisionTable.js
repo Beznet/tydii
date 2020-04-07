@@ -48,7 +48,7 @@ const DecisionTable = ({ items }) => {
               setToggle(!toggled);
             }}
           >
-            Tydii Up!
+            Tydi Up!
           </button>
         ) : (
           <Spinner color="hsl(249, 13%, 30.2%)" />
@@ -97,19 +97,15 @@ const DecisionTable = ({ items }) => {
             )}
           </ModalBody>
           <ModalFooter className="justify-content-center">
-            <Link>
-              <a href="/resources">
-                <button className="decision-button" type="button">
-                  Sell my stuff
-                </button>
-              </a>
+            <Link href="/resources">
+              <button className="decision-button" type="button">
+                Sell my stuff
+              </button>
             </Link>
-            <Link>
-              <a href="/resources">
-                <button className="decision-button" type="button">
-                  Donate my stuff
-                </button>
-              </a>
+            <Link href="/resources">
+              <button className="decision-button" type="button">
+                Donate my stuff
+              </button>
             </Link>
           </ModalFooter>
         </Modal>
