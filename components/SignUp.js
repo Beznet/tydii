@@ -1,68 +1,107 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import Router from 'next/router';
+import {
+  Button,
+  Input,
+  Label,
+  Form,
+  FormGroup,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from 'reactstrap'
 import cookie from 'js-cookie';
+import useToggle from '../hooks/useToggle'
 
-const Signup = () => {
-  const [signupError, setSignupError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+const SignupForm = () => {
+  const [SignupModalOpen, toggleSignupModal] = useToggle()
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data && data.error) {
-          setSignupError(data.message);
-        }
-        if (data && data.token) {
-          //set cookie
-          cookie.set('token', data.token, {expires: 2});
-          Router.push('/');
-        }
-      });
-  }
+  function SignupModal ({open, toggle}) {
+    const [signupError, setSignupError] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleCloseClick = useCallback(() => {
+      toggle()
+    }, [])
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      fetch('/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data && data.error) {
+            setSignupError(data.message);
+          }
+          if (data && data.token) {
+            //set cookie
+            cookie.set('token', data.token, {expires: 2});
+            Router.push('/');
+          }
+        });
+    }
+    return (
+      <Modal
+      isOpen={open}
+      toggle={handleCloseClick}
+      modalTransition={{ timeout: 0 }}
+      backdropTransition={{ timeout: 0 }}
+      >
+      <Form onSubmit={handleSubmit}>
+        <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
+          Sign Up
+        </ModalHeader>
+        <ModalBody>
+        <FormGroup>
+          <Label for="email">
+            email
+            <Input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              type="email"
+            />
+          </Label>
+
+          <Label for="password">
+            password
+            <Input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              type="password"
+            />
+          </Label>
+          <ModalFooter>
+            <input type="submit" value="Submit" />
+          </ModalFooter>
+          {signupError && <p style={{color: 'red'}}>{signupError}</p>}
+        </FormGroup>
+        </ModalBody>
+        </Form>
+      </Modal>
+    );
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Sign Up</p>
-      <label htmlFor="email">
-        email
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          name="email"
-          type="email"
-        />
-      </label>
-
-      <br />
-
-      <label for="password">
-        password
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          type="password"
-        />
-      </label>
-
-      <br />
-
-      <input type="submit" value="Submit" />
-      {signupError && <p style={{color: 'red'}}>{signupError}</p>}
-    </form>
-  );
+    <>
+      <Button className='m-2' onClick={toggleSignupModal} color='success' size='lg'>Sign Up</Button>
+      <SignupModal
+        open={SignupModalOpen}
+        toggle={toggleSignupModal}
+      />
+    </>
+  )
 };
 
-export default Signup;
+export default SignupForm;
