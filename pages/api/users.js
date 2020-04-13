@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb')
 const assert = require('assert');
 const bcrypt = require('bcrypt');
 const v4 = require('uuid').v4;
