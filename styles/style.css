@@ -159,7 +159,7 @@ span ul {
   box-shadow: 3px 3px 0px 0px #41726e;
 }
 
-#add-button {
+#action-button {
   width: 70px;
   height: 50px;
   border-radius: 10px;
@@ -167,7 +167,7 @@ span ul {
 }
 
 #tydi-button:hover,
-#add-button:hover {
+#action-button:hover {
   background-color: var(--button-hover);
   box-shadow: 3px 3px 0px 0px #b6795b;
   transition: all 200ms;

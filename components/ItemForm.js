@@ -22,7 +22,7 @@ const ItemForm = ({ saveItem }) => {
         />
         <button
           type="submit"
-          id="add-button"
+          id="action-button"
           className="ml-2"
           onClick={itemSubmit}
         >

@@ -1,6 +1,5 @@
 import React, {useState, useCallback} from 'react';
 import {
-  Button,
   Input,
   Form,
   FormGroup,
@@ -54,7 +53,7 @@ function LoginForm () {
   
   return (
     <>
-    <Button className='m-2' onClick={toggleLoginModal} color='success' size='lg'>Login</Button>
+    <button onClick={toggleLoginModal} color='success' size='lg'>Login</button>
       <Modal
       isOpen={loginModalOpen}
       toggle={handleCloseClick}

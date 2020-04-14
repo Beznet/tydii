@@ -1,7 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import Router from 'next/router';
 import {
-  Button,
   Input,
   Label,
   Form,
@@ -50,7 +49,7 @@ function SignupForm () {
   }
   return (
     <>
-      <Button className='m-2' onClick={toggleSignupModal} color='success' size='lg'>Sign Up</Button>
+      <button onClick={toggleSignupModal} color='success' size='lg'>Sign Up</button>
       <Modal
       isOpen={signupModalOpen}
       toggle={handleCloseClick}

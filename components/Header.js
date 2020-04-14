@@ -8,10 +8,11 @@ const Header = () => (
     <Col sm="3"></Col>
     <Col className="text-center" sm="6">
       <Title copy="Tydii" role="heading" />
+    </Col>
+    <Col sm="3">
       <LoginForm />
       <SignupForm />
     </Col>
-    <Col sm="3"></Col>
   </Row>
 );
 
