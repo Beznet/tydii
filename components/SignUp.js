@@ -14,45 +14,45 @@ import {
 import cookie from 'js-cookie';
 import useToggle from '../hooks/useToggle'
 
-const SignupForm = () => {
-  const [SignupModalOpen, toggleSignupModal] = useToggle()
+function SignupForm () {
+  const [signupError, setSignupError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [signupModalOpen, toggleSignupModal] = useToggle();
 
-  function SignupModal ({open, toggle}) {
-    const [signupError, setSignupError] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const handleCloseClick = useCallback(() => {
+    toggleSignupModal()
+  }, [])
 
-    const handleCloseClick = useCallback(() => {
-      toggle()
-    }, [])
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      fetch('/api/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      })
-        .then((r) => r.json())
-        .then((data) => {
-          if (data && data.error) {
-            setSignupError(data.message);
-          }
-          if (data && data.token) {
-            //set cookie
-            cookie.set('token', data.token, {expires: 2});
-            Router.push('/');
-          }
-        });
-    }
-    return (
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && data.error) {
+          setSignupError(data.message);
+        }
+        if (data && data.token) {
+          //set cookie
+          cookie.set('token', data.token, {expires: 2});
+          Router.push('/');
+        }
+      });
+  }
+  return (
+    <>
+      <Button className='m-2' onClick={toggleSignupModal} color='success' size='lg'>Sign Up</Button>
       <Modal
-      isOpen={open}
+      isOpen={signupModalOpen}
       toggle={handleCloseClick}
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
@@ -90,18 +90,8 @@ const SignupForm = () => {
         </ModalBody>
         </Form>
       </Modal>
-    );
-  };
-
-  return (
-    <>
-      <Button className='m-2' onClick={toggleSignupModal} color='success' size='lg'>Sign Up</Button>
-      <SignupModal
-        open={SignupModalOpen}
-        toggle={toggleSignupModal}
-      />
     </>
-  )
+  );
 };
 
 export default SignupForm;
