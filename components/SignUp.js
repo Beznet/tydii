@@ -46,6 +46,7 @@ function SignupForm () {
           Router.push('/');
         }
       });
+    toggleSignupModal()
   }
   return (
     <>
