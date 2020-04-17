@@ -11,6 +11,7 @@ import {
 import Link from 'next/link';
 
 function DonateItems({ items }) {
+  console.log(items)
   const donateArray = [];
   for (const item of items) {
     if (item.rating <= 3) {

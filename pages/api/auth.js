@@ -1,9 +1,7 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient } = require('mongodb');
 const assert = require('assert');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-const saltRounds = 10;
 
 const client = new MongoClient(process.env.URL, {
   useNewUrlParser: true,
