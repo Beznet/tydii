@@ -17,7 +17,7 @@ function findUser(db, email, callback) {
   collection.findOne({email}, callback);
 }
 
-function createUser(db, email, password, callback) {
+function createUser(db, email, password, list, callback) {
   const collection = db.collection('user');
   bcrypt.hash(password, saltRounds, function(err, hash) {
     // Store hash in your password DB.
@@ -25,7 +25,8 @@ function createUser(db, email, password, callback) {
       {
         userId: v4(),
         email,
-        password: hash,
+        list,
+        password: hash
       },
       function(err, userCreated) {
         assert.equal(err, null);
@@ -52,6 +53,7 @@ export default (req, res) => {
       const db = client.db(process.env.DB_NAME);
       const email = req.body.email;
       const password = req.body.password;
+      const list =  []
 
       console.log(email)
 
@@ -62,11 +64,11 @@ export default (req, res) => {
         }
         if (!user) {
           // proceed to Create
-          createUser(db, email, password, function(creationResult) {
+          createUser(db, email, password, list, function(creationResult) {
             if (creationResult.ops.length === 1) {
               const user = creationResult.ops[0];
               const token = jwt.sign(
-                {userId: user.userId, email: user.email},
+                {userId: user.userId, email: user.email, list: user.list},
                 process.env.JWT_SECRET,
                 {
                   expiresIn: 3000, //50 minutes

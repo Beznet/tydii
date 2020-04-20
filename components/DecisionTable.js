@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   Row,
   Col,
@@ -7,17 +7,20 @@ import {
   ModalBody,
   ModalFooter,
   Spinner,
-} from 'reactstrap';
-import Link from 'next/link';
+} from 'reactstrap'
+import Link from 'next/link'
 
-function DonateItems({ items }) {
-  console.log(items)
-  const donateArray = [];
-  for (const item of items) {
-    if (item.rating <= 3) {
-      donateArray.push(item);
-    }
-  }
+const DecisionTable = ({ items, loggedIn, userData }) => {
+  const [toggled, setToggle] = useState(false)
+  const toggle = () => setToggle(!toggled)
+  const [saveError, setSaveError] = useState('')
+
+  console.log(loggedIn)
+
+  let donateArray = []
+  donateArray = items.filter(item => item.rating <= 3)
+
+  console.log(donateArray)
 
   const donateResults = !donateArray.length
     ? 'You enjoy everying, think a bit harder :)'
@@ -25,18 +28,33 @@ function DonateItems({ items }) {
         <Col xs="12" className="mb-2 decision-text">
           <h4>{item.name.toUpperCase()}</h4>
         </Col>
-      ));
+      ))
 
-  return (
-    <>
-      <Row className="text-center">{donateResults}</Row>
-    </>
-  );
-}
 
-const DecisionTable = ({ items }) => {
-  const [toggled, setToggle] = useState(false);
-  const toggle = () => setToggle(!toggled);
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch('/api/list', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user: userData.userId,
+        list: items
+      }),
+    })
+      .then((r) => r.json())
+      // .then((data) => {
+      //   if (data && data.error) {
+      //     setSaveError(data.message)
+      //   }
+      //   if (data && data.token) {
+      //     //set cookie
+      //     cookie.set('token', data.token, {expires: 2})
+      //     Router.push('/')
+      //   }
+      // })
+  }
 
   return (
     <Row>
@@ -46,7 +64,7 @@ const DecisionTable = ({ items }) => {
             id="tydi-button"
             type="submit"
             onClick={() => {
-              setToggle(!toggled);
+              setToggle(!toggled)
             }}
           >
             Tydi Up!
@@ -78,41 +96,28 @@ const DecisionTable = ({ items }) => {
             </Row>
           </ModalHeader>
           <ModalBody>
-            {items.length === 0 ? (
-              "There's nothing here"
-            ) : (
-              <Col xs="12">
-                <Row>
-                  <Col xs="12">
-                    <DonateItems items={items} />
+            <Col xs="12">
+              <Row>
+                <Col xs="12">
+                  <Row className="text-center">{donateResults}</Row>
+                </Col>
+                <Col className="quote text-center mt-5" xs="12">
+                  “It is the preoccupation with possessions that prevents us
+                  from living freely and nobly.”
+                  <Col className="blockquote-footer" xs="12">
+                    Bertrand Russell
                   </Col>
-                  <Col className="quote text-center mt-5" xs="12">
-                    “It is the preoccupation with possessions that prevents us
-                    from living freely and nobly.”
-                    <Col className="blockquote-footer" xs="12">
-                      Bertrand Russell
-                    </Col>
-                  </Col>
-                </Row>
-              </Col>
-            )}
+                </Col>
+              </Row>
+            </Col>
           </ModalBody>
           <ModalFooter className="justify-content-center">
-            <Link href="/resources">
-              <button className="decision-button" type="button">
-                Sell my stuff
-              </button>
-            </Link>
-            <Link href="/resources">
-              <button className="decision-button" type="button">
-                Donate my stuff
-              </button>
-            </Link>
+            <button type='submit' onClick={handleSubmit}>Save</button>
           </ModalFooter>
         </Modal>
       </Col>
     </Row>
-  );
-};
+  )
+}
 
-export default DecisionTable;
+export default DecisionTable
