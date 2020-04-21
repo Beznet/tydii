@@ -40,20 +40,10 @@ const DecisionTable = ({ items, loggedIn, userData }) => {
       },
       body: JSON.stringify({
         user: userData.userId,
-        list: items
+        list: donateArray
       }),
     })
       .then((r) => r.json())
-      // .then((data) => {
-      //   if (data && data.error) {
-      //     setSaveError(data.message)
-      //   }
-      //   if (data && data.token) {
-      //     //set cookie
-      //     cookie.set('token', data.token, {expires: 2})
-      //     Router.push('/')
-      //   }
-      // })
   }
 
   return (

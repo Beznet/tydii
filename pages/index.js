@@ -9,7 +9,8 @@ import DecisionTable from '../components/DecisionTable';
 import fetch from 'isomorphic-unfetch';
 import useSWR from 'swr';
 import cookie from 'js-cookie';
-//  import useItemState from '../components/useItemStateImmer';
+import LoginForm from '../components/login';
+import SignupForm from '../components/SignUp';
 
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([]);
@@ -48,16 +49,25 @@ export default function Index() {
             />
           </div>
           <DecisionTable items={items} loggedIn={loggedIn} userData={data} />
-          <button
-            onClick={() => {
-              cookie.remove('token');
-              revalidate();
-            }}
-          >
+        </Col>
+        <Col lg="3" md="2">
+        {!loggedIn
+        ?
+        <div>
+          <LoginForm />
+          <SignupForm />
+        </div>
+        :
+        <button
+        onClick={() => {
+          cookie.remove('token');
+          revalidate();
+        }}
+        >
           Logout
         </button>
+        }
         </Col>
-        <Col lg="3" md="2"></Col>
       </Row>
     </Layout>
   );

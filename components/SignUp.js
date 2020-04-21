@@ -12,6 +12,7 @@ import {
 } from 'reactstrap'
 import cookie from 'js-cookie';
 import useToggle from '../hooks/useToggle'
+import handleSubmit from '../calls/rest'
 
 function SignupForm () {
   const [signupError, setSignupError] = useState('');
@@ -23,18 +24,10 @@ function SignupForm () {
     toggleSignupModal()
   }, [])
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
+ function handleSignupSubmit(e) {
+    let userEmail = email
+    let userPassword = password
+    handleSubmit(e, userEmail, userPassword)
       .then((r) => r.json())
       .then((data) => {
         if (data && data.error) {
@@ -57,7 +50,7 @@ function SignupForm () {
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
       >
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSignupSubmit}>
         <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
           Sign Up
         </ModalHeader>

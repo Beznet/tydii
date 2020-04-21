@@ -23,8 +23,8 @@ export default async (req, res) => {
       const user = req.body.user
       const list = req.body.list
       try {
-      insertList(db, user, list)
-      res.status(201).json({ success: true, data: list})
+        insertList(db, user, list)
+        res.status(201).json({ success: true, data: list})
       } catch(err) {
         res.status(400).json({ error: true, message: "There was an error with this request"})
       }

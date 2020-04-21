@@ -1,7 +1,5 @@
 import { Col, Row } from 'reactstrap';
 import Title from './Title';
-import LoginForm from './login';
-import SignupForm from './SignUp';
 
 const Header = () => (
   <Row className="mb-2 mt-sm-2">
@@ -10,8 +8,6 @@ const Header = () => (
       <Title copy="Tydii" role="heading" />
     </Col>
     <Col sm="3">
-      <LoginForm />
-      <SignupForm />
     </Col>
   </Row>
 );
