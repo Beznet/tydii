@@ -8,7 +8,6 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap'
-import Router from 'next/router';
 import cookie from 'js-cookie';
 import useToggle from '../hooks/useToggle'
 
