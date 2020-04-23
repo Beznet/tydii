@@ -21,6 +21,8 @@ function SignupForm () {
   const [signupModalOpen, toggleSignupModal] = useToggle();
 
   const handleCloseClick = useCallback(() => {
+    setEmail()
+    setPassword()
     toggleSignupModal()
   }, [])
 
@@ -36,10 +38,11 @@ function SignupForm () {
         if (data && data.token) {
           //set cookie
           cookie.set('token', data.token, {expires: 2});
-          Router.push('/');
+          setEmail()
+          setPassword()
+          toggleSignupModal()
         }
       });
-    toggleSignupModal()
   }
   return (
     <>

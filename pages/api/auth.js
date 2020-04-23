@@ -59,7 +59,7 @@ export default (req, res) => {
               res.status(200).json({token});
               return;
             } else {
-              res.status(401).json({error: true, message: 'Auth Failed'});
+              res.status(401).json({error: true, message: 'Wrong Password'});
               return;
             }
           });
