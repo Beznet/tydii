@@ -17,6 +17,12 @@ export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([]);
   let loggedIn = false
 
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('myCat', 'Tom');
+    let cat = window.localStorage.getItem('myCat');
+    console.log(cat)
+  }
+
   const {data, revalidate} = useSWR('/api/me', async function(args) {
     const res = await fetch(args);
     return res.json();
