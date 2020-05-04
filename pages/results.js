@@ -3,22 +3,20 @@ import React from 'react'
 import usePersistedState from '../hooks/usePersistedState'
 
 const LocalStateResults = () => {
-    const [localStateItems, _] = usePersistedState()
-    
-    const newLocalStateItems = localStateItems
+  const [localStateItems, _] = usePersistedState('items', {})
 
-    return (
-      <div>
-          {newLocalStateItems}
-      </div>
-    )
-  
-  }
+  return (
+    <div>
+      {JSON.stringify(localStateItems)}
+    </div>
+  )
+
+}
 
 export default function Results() {
     return (
     <Layout>
-        {typeof window !== 'undefined' ? <LocalStateResults /> : 'window not there'}
+        <LocalStateResults />
     </Layout>
     );
 }
