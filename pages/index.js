@@ -12,17 +12,21 @@ import cookie from 'js-cookie';
 import LoginForm from '../components/login';
 import SignupForm from '../components/SignUp';
 import Link from 'next/link';
+import usePersistedState from '../hooks/usePersistedState'
+
+const LocalStateButton = ({items}) => {
+  const localItems = {...items}
+  const [_, setLocalItems] = usePersistedState('items', 'nothing')
+
+  return (
+    <button id="tydi-button" type="submit" onClick={() => setLocalItems(localItems)}>Tydii Up!</button>
+  )
+
+}
 
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([]);
   let loggedIn = false
-
-  if (typeof window !== 'undefined') {
-    window.localStorage.setItem('myCat', 'Tom');
-    let cat = window.localStorage.getItem('myCat');
-    console.log(cat)
-  }
-
   const {data, revalidate} = useSWR('/api/me', async function(args) {
     const res = await fetch(args);
     return res.json();
@@ -55,7 +59,15 @@ export default function Index() {
               updateItem={updateItem}
             />
           </div>
-          <DecisionTable items={items} loggedIn={loggedIn} userData={data} />
+          {typeof window !== 'undefined' 
+            ? <Row>
+                <Col className="text-center mt-3">
+                  <Link href='/results'>
+                    <a><LocalStateButton items={items} /></a>
+                  </Link>
+                </Col>
+              </Row> 
+            : ''}
         </Col>
         <Col lg="3" md="2">
         {!loggedIn
@@ -76,9 +88,6 @@ export default function Index() {
         }
         </Col>
       </Row>
-        <Link href='/results'>
-          <h2>Click Me</h2>
-        </Link>
     </Layout>
   );
 }
