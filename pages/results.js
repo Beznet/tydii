@@ -8,10 +8,6 @@ export default function LocalStateResults () {
   const donate = localStateValues.filter( item => item.rating <= 3)
   const keep = localStateValues.filter( item => item.rating > 3)
 
-
-
-
-  // todo: take each item name/rating and list it into different categories
   return (
     <Layout>
       <div>
