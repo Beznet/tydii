@@ -10,7 +10,7 @@ try {
 } catch (error) {}
 
 // next.config.js
-const withCSS = require('@zeit/next-css');
+const withCSS = require('@zeit/next-css')
 
 module.exports = withCSS({
   /* config options here */
@@ -25,5 +25,5 @@ module.exports = withCSS({
       },
     ],
   },
-});
+})
 

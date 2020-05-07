@@ -1,17 +1,17 @@
-import React from 'react';
-import '../styles/style.css';
-import { Col, Row } from 'reactstrap';
-import Layout from '../components/Layout';
-import ItemForm from '../components/ItemForm';
-import ItemList from '../components/ItemList';
-import useItemState from '../components/useItemState';
-import DecisionTable from '../components/DecisionTable';
-import fetch from 'isomorphic-unfetch';
-import useSWR from 'swr';
-import cookie from 'js-cookie';
-import LoginForm from '../components/login';
-import SignupForm from '../components/SignUp';
-import Link from 'next/link';
+import React from 'react'
+import '../styles/style.css'
+import { Col, Row } from 'reactstrap'
+import Layout from '../components/Layout'
+import ItemForm from '../components/ItemForm'
+import ItemList from '../components/ItemList'
+import useItemState from '../components/useItemState'
+import DecisionTable from '../components/DecisionTable'
+import fetch from 'isomorphic-unfetch'
+import useSWR from 'swr'
+import cookie from 'js-cookie'
+import LoginForm from '../components/login'
+import SignupForm from '../components/SignUp'
+import Link from 'next/link'
 import usePersistedState from '../hooks/usePersistedState'
 
 const LocalStateButton = ({items}) => {
@@ -25,12 +25,12 @@ const LocalStateButton = ({items}) => {
 }
 
 export default function Index() {
-  const { items, addItem, deleteItem, updateItem } = useItemState([]);
+  const { items, addItem, deleteItem, updateItem } = useItemState([])
   let loggedIn = false
   const {data, revalidate} = useSWR('/api/me', async function(args) {
-    const res = await fetch(args);
-    return res.json();
-  });
+    const res = await fetch(args)
+    return res.json()
+  })
   if(!data) {
     console.log('no data')
   }
@@ -46,10 +46,10 @@ export default function Index() {
           <div className="form-box">
             <ItemForm
               saveItem={itemText => {
-                const trimmedText = itemText.trim();
+                const trimmedText = itemText.trim()
 
                 if (trimmedText.length > 0) {
-                  addItem(trimmedText);
+                  addItem(trimmedText)
                 }
               }}
             />
@@ -79,8 +79,8 @@ export default function Index() {
         :
         <button
         onClick={() => {
-          cookie.remove('token');
-          revalidate();
+          cookie.remove('token')
+          revalidate()
         }}
         >
           Logout
@@ -89,5 +89,5 @@ export default function Index() {
         </Col>
       </Row>
     </Layout>
-  );
+  )
 }

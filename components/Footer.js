@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { Col, Row } from 'reactstrap';
+import Link from 'next/link'
+import { Col, Row } from 'reactstrap'
 
 const Footer = ({ className }) => (
   <Row className={className} id="footer">
@@ -21,6 +21,6 @@ const Footer = ({ className }) => (
       </Link>
     </Col>
   </Row>
-);
+)
 
-export default Footer;
+export default Footer

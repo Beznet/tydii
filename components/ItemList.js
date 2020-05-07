@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button, Col, Row } from 'reactstrap';
-import Slider from './Slider';
+import React from 'react'
+import { Button, Col, Row } from 'reactstrap'
+import Slider from './Slider'
 
 /**
  * TODO: Make an Item component
@@ -18,7 +18,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
     ) : (
       items.map(item => {
         const updateValueHandler = rating =>
-          updateItem(Object.assign({}, item, { rating }));
+          updateItem(Object.assign({}, item, { rating }))
 
         return (
           <Col className="d-flex-inline" xs="12">
@@ -29,7 +29,7 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
                   className="float-left ml-sm-4"
                   close
                   onClick={() => {
-                    deleteItem(item.id);
+                    deleteItem(item.id)
                   }}
                 />
               </Col>
@@ -48,11 +48,11 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
               </Col>
             </Row>
           </Col>
-        );
+        )
       })
-    );
+    )
 
-  return <Row className="no-gutters">{renderItems()}</Row>;
-};
+  return <Row className="no-gutters">{renderItems()}</Row>
+}
 
-export default ItemList;
+export default ItemList

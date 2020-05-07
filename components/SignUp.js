@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback} from 'react'
 import {
   Input,
   Label,
@@ -9,15 +9,15 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap'
-import cookie from 'js-cookie';
+import cookie from 'js-cookie'
 import useToggle from '../hooks/useToggle'
 import handleSubmit from '../calls/rest'
 
 function SignupForm () {
-  const [signupError, setSignupError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [signupModalOpen, toggleSignupModal] = useToggle();
+  const [signupError, setSignupError] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [signupModalOpen, toggleSignupModal] = useToggle()
 
   const handleCloseClick = useCallback(() => {
     setEmail()
@@ -32,16 +32,16 @@ function SignupForm () {
       .then((r) => r.json())
       .then((data) => {
         if (data && data.error) {
-          setSignupError(data.message);
+          setSignupError(data.message)
         }
         if (data && data.token) {
           //set cookie
-          cookie.set('token', data.token, {expires: 2});
+          cookie.set('token', data.token, {expires: 2})
           setEmail()
           setPassword()
           toggleSignupModal()
         }
-      });
+      })
   }
   return (
     <>
@@ -86,7 +86,7 @@ function SignupForm () {
         </Form>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm

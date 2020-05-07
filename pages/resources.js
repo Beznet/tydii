@@ -1,6 +1,6 @@
-import { Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
-import Layout from '../components/Layout';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Row, Col, ListGroup, ListGroupItem } from 'reactstrap'
+import Layout from '../components/Layout'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Resources() {
   return (
@@ -65,5 +65,5 @@ export default function Resources() {
         </Col>
       </Row>
     </Layout>
-  );
+  )
 }

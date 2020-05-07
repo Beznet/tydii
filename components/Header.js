@@ -1,6 +1,6 @@
-import { Col, Row } from 'reactstrap';
-import Title from './Title';
-import Link from 'next/link';
+import { Col, Row } from 'reactstrap'
+import Title from './Title'
+import Link from 'next/link'
 
 const Header = () => (
   <Row className="mb-2 mt-sm-2">
@@ -13,6 +13,6 @@ const Header = () => (
     <Col sm="3">
     </Col>
   </Row>
-);
+)
 
-export default Header;
+export default Header

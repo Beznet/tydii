@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback} from 'react'
 import {
   Input,
   Form,
@@ -8,14 +8,14 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap'
-import Router from 'next/router';
-import cookie from 'js-cookie';
+import Router from 'next/router'
+import cookie from 'js-cookie'
 import useToggle from '../hooks/useToggle'
 
 function LoginForm () {
-  const [loginError, setLoginError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loginModalOpen, toggleLoginModal] = useToggle()
 
   const handleCloseClick = useCallback(() => {
@@ -25,7 +25,7 @@ function LoginForm () {
   }, [])
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     //call api
     fetch('/api/auth', {
       method: 'POST',
@@ -38,20 +38,20 @@ function LoginForm () {
       }),
     })
       .then((r) => {
-        return r.json();
+        return r.json()
       })
       .then((data) => {
         if (data && data.error) {
-          setLoginError(data.message);
+          setLoginError(data.message)
         }
         if (data && data.token) {
           //set cookie
-          cookie.set('token', data.token, {expires: 2});
+          cookie.set('token', data.token, {expires: 2})
           setEmail()
           setPassword()
           toggleLoginModal()
         }
-      });
+      })
   }
   
   return (
@@ -90,7 +90,7 @@ function LoginForm () {
         </Form>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm
