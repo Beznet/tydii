@@ -49,6 +49,7 @@ export default (req, res) => {
               res.status(500).json({error: true, message: 'Auth Failed'})
             }
             if (match) {
+              const listData = user.list
               const token = jwt.sign(
                 {userId: user.userId, email: user.email},
                 process.env.JWT_SECRET,
@@ -56,7 +57,7 @@ export default (req, res) => {
                   expiresIn: 3000, //50 minutes
                 },
               )
-              res.status(200).json({token})
+              res.status(200).json({token, listData})
               return
             } else {
               res.status(401).json({error: true, message: 'Wrong Password'})

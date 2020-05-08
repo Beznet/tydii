@@ -8,11 +8,10 @@ import {
   ModalBody,
   ModalFooter
 } from 'reactstrap'
-import Router from 'next/router'
 import cookie from 'js-cookie'
 import useToggle from '../hooks/useToggle'
 
-function LoginForm () {
+function LoginForm ({setListData}) {
   const [loginError, setLoginError] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -45,8 +44,10 @@ function LoginForm () {
           setLoginError(data.message)
         }
         if (data && data.token) {
-          //set cookie
+          setListData(data.listData)
+          // set cookie
           cookie.set('token', data.token, {expires: 2})
+          // resets field data & closes modal
           setEmail()
           setPassword()
           toggleLoginModal()

@@ -1,11 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/style.css'
 import { Col, Row } from 'reactstrap'
 import Layout from '../components/Layout'
 import ItemForm from '../components/ItemForm'
 import ItemList from '../components/ItemList'
 import useItemState from '../components/useItemState'
-import DecisionTable from '../components/DecisionTable'
 import fetch from 'isomorphic-unfetch'
 import useSWR from 'swr'
 import cookie from 'js-cookie'
@@ -14,8 +13,8 @@ import SignupForm from '../components/SignUp'
 import Link from 'next/link'
 import usePersistedState from '../hooks/usePersistedState'
 
-const LocalStateButton = ({items}) => {
-  const localItems = {...items}
+const LocalStateButton = ({items, databaseList}) => {
+  const localItems = databaseList.length !== 0 ? {...databaseList} : {...items}
   const [_, setLocalItems] = usePersistedState('items', 'nothing')
 
   return (
@@ -27,6 +26,7 @@ const LocalStateButton = ({items}) => {
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([])
   let loggedIn = false
+  const [listData, setListData] = useState('nuttin')
   const {data, revalidate} = useSWR('/api/me', async function(args) {
     const res = await fetch(args)
     return res.json()
@@ -63,7 +63,7 @@ export default function Index() {
             ? <Row>
                 <Col className="text-center mt-3">
                   <Link href='/results'>
-                    <a><LocalStateButton items={items} /></a>
+                    <a><LocalStateButton items={items} databaseList={listData}/></a>
                   </Link>
                 </Col>
               </Row> 
@@ -73,7 +73,7 @@ export default function Index() {
         {!loggedIn
         ?
         <div>
-          <LoginForm />
+          <LoginForm setListData={setListData}/>
           <SignupForm />
         </div>
         :

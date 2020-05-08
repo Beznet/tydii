@@ -12,7 +12,6 @@ const client = new MongoClient(process.env.URL, {
 })
 
 function findUser(db, email, callback) {
-  console.log('findUser callback:', callback)
   const collection = db.collection('user')
   collection.findOne({email}, callback)
 }
@@ -55,8 +54,6 @@ export default (req, res) => {
       const email = req.body.email
       const password = req.body.password
       const list =  []
-
-      console.log(email)
 
       findUser(db, email, function(err, user) {
         if (err) {
