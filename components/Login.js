@@ -9,13 +9,35 @@ import {
   ModalFooter
 } from 'reactstrap'
 import cookie from 'js-cookie'
+import Link from 'next/link'
 import useToggle from '../hooks/useToggle'
+import usePersistedState from '../hooks/usePersistedState'
+
+const LoggedInChoice = ({databaseItems}) => {
+  const [_, setLocalItems] = usePersistedState('items', 'nothing')
+
+  return (
+    <>
+      <ModalHeader>You have an existing list</ModalHeader>
+      <ModalBody>
+        <Link href='/results'>
+          <a>
+            <button onClick={() => setLocalItems(databaseItems)}>Go to my list</button>
+          </a>
+        </Link>
+        <button>Create a new list</button>
+      </ModalBody>
+    </>
+  )
+}
 
 function LoginForm ({setListData}) {
   const [loginError, setLoginError] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginModalOpen, toggleLoginModal] = useToggle()
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [databaseItems, setDatabaseItems] = useState()
 
   const handleCloseClick = useCallback(() => {
     setEmail()
@@ -44,26 +66,28 @@ function LoginForm ({setListData}) {
           setLoginError(data.message)
         }
         if (data && data.token) {
-          setListData(data.listData)
+          setDatabaseItems(data.listData)
+          setLoggedIn(true)
           // set cookie
           cookie.set('token', data.token, {expires: 2})
           // resets field data & closes modal
           setEmail()
           setPassword()
-          toggleLoginModal()
+          // toggleLoginModal()
         }
       })
   }
   
   return (
     <>
-    <button onClick={toggleLoginModal} color='success' size='lg'>Login</button>
+    <button onClick={toggleLoginModal} color='success' size='lg'>Login</button> 
       <Modal
       isOpen={loginModalOpen}
       toggle={handleCloseClick}
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
       >
+        {loggedIn ? <LoggedInChoice databaseItems={databaseItems}/> : 
         <Form onSubmit={handleSubmit}>
           <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
             Login
@@ -89,6 +113,7 @@ function LoginForm ({setListData}) {
           </FormGroup>
           </ModalBody>
         </Form>
+        }
       </Modal>
     </>
   )
