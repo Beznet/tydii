@@ -39,9 +39,8 @@ export default (req, res) => {
   if (req.method === 'POST') {
     // signup
     try {
-      console.log(req.body)
       assert.notEqual('', req.body.email, 'Email required')
-      assert.notEqual('', req.body.password, 'Password required')
+      assert.notEqual('', req.body.password.trim(), 'Password required')
     } catch (bodyError) {
       return res.status(403).json({error: true, message: bodyError.message})
     }

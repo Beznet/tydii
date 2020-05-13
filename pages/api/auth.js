@@ -22,10 +22,10 @@ export default (req, res) => {
   if (req.method === 'POST') {
     //login
     try {
-      assert.notEqual(null, req.body.email, 'Email required')
-      assert.notEqual(null, req.body.password, 'Password required')
+      assert.notEqual('', req.body.email, 'Email required')
+      assert.notEqual('', req.body.password, 'Password required')
     } catch (bodyError) {
-      res.status(403).send(bodyError.message)
+      return res.status(403).send({error: true, message: bodyError.message})
     }
 
     client.connect(function(err) {
