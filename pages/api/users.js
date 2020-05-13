@@ -53,7 +53,7 @@ export default (req, res) => {
       const db = client.db(process.env.DB_NAME)
       const email = req.body.email
       const password = req.body.password
-      const list =  []
+      const list = {}
 
       findUser(db, email, function(err, user) {
         if (err) {

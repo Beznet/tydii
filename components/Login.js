@@ -31,7 +31,7 @@ const LoggedInChoice = ({databaseItems}) => {
   )
 }
 
-function LoginForm ({setListData}) {
+function LoginForm () {
   const [loginError, setLoginError] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -65,7 +65,8 @@ function LoginForm ({setListData}) {
         if (data && data.error) {
           setLoginError(data.message)
         }
-        if (data && data.token) {
+        // need to figure out how to differentiate between user with data & no data
+        if (data && data.token && Object.keys(data.listData).length !== 0) {
           setDatabaseItems(data.listData)
           setLoggedIn(true)
           // set cookie
@@ -73,7 +74,14 @@ function LoginForm ({setListData}) {
           // resets field data & closes modal
           setEmail()
           setPassword()
-          // toggleLoginModal()
+        } else if (data && data.token) {
+          setLoggedIn(true)
+          // set cookie
+          cookie.set('token', data.token, {expires: 2})
+          // resets field data & closes modal
+          setEmail()
+          setPassword()
+          toggleLoginModal()
         }
       })
   }
@@ -87,7 +95,8 @@ function LoginForm ({setListData}) {
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
       >
-        {loggedIn ? <LoggedInChoice databaseItems={databaseItems}/> : 
+        {loggedIn ? 
+        <LoggedInChoice databaseItems={databaseItems}/> : 
         <Form onSubmit={handleSubmit}>
           <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
             Login
