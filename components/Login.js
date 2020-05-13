@@ -13,7 +13,7 @@ import Link from 'next/link'
 import useToggle from '../hooks/useToggle'
 import usePersistedState from '../hooks/usePersistedState'
 
-const LoggedInChoice = ({databaseItems}) => {
+const LoggedInChoice = ({databaseItems, toggleLoginModal}) => {
   const [_, setLocalItems] = usePersistedState('items', 'nothing')
 
   return (
@@ -25,7 +25,7 @@ const LoggedInChoice = ({databaseItems}) => {
             <button onClick={() => setLocalItems(databaseItems)}>Go to my list</button>
           </a>
         </Link>
-        <button>Create a new list</button>
+        <button onClick={toggleLoginModal}>Create a new list</button>
       </ModalBody>
     </>
   )
@@ -65,18 +65,17 @@ function LoginForm () {
         if (data && data.error) {
           setLoginError(data.message)
         }
-        // need to figure out how to differentiate between user with data & no data
+        // checks if user has logged in and has an object of items
         if (data && data.token && Object.keys(data.listData).length !== 0) {
           setDatabaseItems(data.listData)
           setLoggedIn(true)
-          // set cookie
           cookie.set('token', data.token, {expires: 2})
           // resets field data & closes modal
           setEmail()
           setPassword()
+        // if user only has an empty object of items, close modal
         } else if (data && data.token) {
           setLoggedIn(true)
-          // set cookie
           cookie.set('token', data.token, {expires: 2})
           // resets field data & closes modal
           setEmail()
@@ -96,7 +95,7 @@ function LoginForm () {
       backdropTransition={{ timeout: 0 }}
       >
         {loggedIn ? 
-        <LoggedInChoice databaseItems={databaseItems}/> : 
+        <LoggedInChoice databaseItems={databaseItems} toggleLoginModal={toggleLoginModal} /> : 
         <Form onSubmit={handleSubmit}>
           <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
             Login
