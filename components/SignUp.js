@@ -45,7 +45,7 @@ function SignupForm () {
   }
   return (
     <>
-      <button onClick={toggleSignupModal} color='success' size='lg'>Sign Up</button>
+      <button onClick={toggleSignupModal} color='success' className='m-1 badge badge-pill shadow-sm'>Sign Up</button>
       <Modal
       isOpen={signupModalOpen}
       toggle={handleCloseClick}
@@ -59,7 +59,7 @@ function SignupForm () {
         <ModalBody>
         <FormGroup>
           <Label for="email">
-            email
+            Email
             <Input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -67,9 +67,10 @@ function SignupForm () {
               type="email"
             />
           </Label>
-
+          </FormGroup>
+          <FormGroup>
           <Label for="password">
-            password
+            Password
             <Input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -77,11 +78,11 @@ function SignupForm () {
               type="password"
             />
           </Label>
+          </FormGroup>
           <ModalFooter>
-            <input type="submit" value="Submit" />
+            <button type="submit" value="Submit">Submit</button>
           </ModalFooter>
           {signupError && <p style={{color: 'red'}}>{signupError}</p>}
-        </FormGroup>
         </ModalBody>
         </Form>
       </Modal>

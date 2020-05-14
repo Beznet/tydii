@@ -3,6 +3,7 @@ import {
   Input,
   Form,
   FormGroup,
+  Label,
   Modal,
   ModalHeader,
   ModalBody,
@@ -87,7 +88,7 @@ function LoginForm () {
   
   return (
     <>
-    <button onClick={toggleLoginModal} color='success' size='lg'>Login</button> 
+    <button onClick={toggleLoginModal} color='success' className='m-1 badge badge-pill shadow-sm'>Login</button> 
       <Modal
       isOpen={loginModalOpen}
       toggle={handleCloseClick}
@@ -102,23 +103,31 @@ function LoginForm () {
           </ModalHeader>
           <ModalBody>
           <FormGroup>
-            <Input
-              name="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Label for='email'>
+              Email
+              <Input
+                name="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Label>
+          </FormGroup>
+          <FormGroup>
+            <Label for='password'>
+              Password
             <Input
               name="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            </Label>
+          </FormGroup>
             <ModalFooter>
               <Input type="submit" value="Submit" />
             </ModalFooter>
             {loginError && <p style={{color: 'red'}}>{loginError}</p>}
-          </FormGroup>
           </ModalBody>
         </Form>
         }

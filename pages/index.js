@@ -74,12 +74,13 @@ export default function Index() {
         <Col lg="3" md="2">
         {!loggedIn
         ?
-        <div>
-          <LoginForm setListData={setListData}/>
+        <div className='d-flex flex-column w-50'>
           <SignupForm />
+          <LoginForm setListData={setListData}/>
         </div>
         :
         <button
+        className='m-1 badge badge-pill shadow-sm'
         onClick={() => {
           cookie.remove('token')
           revalidate()
