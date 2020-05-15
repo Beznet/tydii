@@ -6,7 +6,6 @@ import useSWR from 'swr'
 import cookie from 'js-cookie'
 import LoginForm from '../components/login'
 import SignupForm from '../components/SignUp'
-import useToggle from '../hooks/useToggle'
 
 export default function LocalStateResults () {
   const [localStateItems, _] = usePersistedState('items', {})

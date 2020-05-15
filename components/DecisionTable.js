@@ -15,8 +15,6 @@ const DecisionTable = ({ items, loggedIn, userData }) => {
   const toggle = () => setToggle(!toggled)
   const [saveError, setSaveError] = useState('')
 
-  console.log(loggedIn)
-
   let donateArray = []
   donateArray = items.filter(item => item.rating <= 3)
 

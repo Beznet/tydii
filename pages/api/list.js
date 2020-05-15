@@ -1,6 +1,4 @@
 const { MongoClient } = require('mongodb')
-const jwt = require('jsonwebtoken')
-const assert = require('assert')
 
 const client = new MongoClient(process.env.URL, {
     useNewUrlParser: true,

@@ -33,6 +33,7 @@ export default function Index() {
     const res = await fetch(args)
     return res.json()
   })
+
   if(!data) {
     console.log('no data')
   }
