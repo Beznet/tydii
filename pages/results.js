@@ -4,7 +4,7 @@ import usePersistedState from '../hooks/usePersistedState'
 import {Col, Row} from 'reactstrap'
 import useSWR from 'swr'
 import cookie from 'js-cookie'
-import LoginForm from '../components/login'
+import LoginForm from '../components/Login'
 import SignupForm from '../components/SignUp'
 
 export default function LocalStateResults () {
