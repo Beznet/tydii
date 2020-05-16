@@ -8,24 +8,22 @@ const client = new MongoClient(process.env.URL, {
 async function insertList(db, user, list) {
   const collection = db.collection('user')
   let result = await collection.updateOne({userId: user }, {$set: {list: list}})
-  console.log(result)
   return result
 }
 
 export default async (req, res) => {
   if (req.method === 'PUT') {
-    client.connect(function() {
-
+    client.connect( async function () {
       console.log('Connected to MongoDB server =>')
-
       const db = client.db(process.env.DB_NAME)
       const user = req.body.user
       const list = req.body.list
       try {
-        insertList(db, user, list)
-        res.status(201).json({ success: true, data: list})
-      } catch(err) {
-        res.status(400).json({ error: true, message: "There was an error with this request"})
+        const responseResult = await insertList(db, user, list)
+        res.status(201).json({ success: true, data: responseResult })
+      }
+      catch (err) {
+        res.status(400).json({ error: true, message: "There was an error with this request" })
       }
       return
     })
