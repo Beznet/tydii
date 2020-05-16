@@ -30,7 +30,7 @@ export default function LocalStateResults () {
   function handleSubmit(e) {
     e.preventDefault()
     fetch('/api/list', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },

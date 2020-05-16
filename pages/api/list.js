@@ -8,11 +8,12 @@ const client = new MongoClient(process.env.URL, {
 async function insertList(db, user, list) {
   const collection = db.collection('user')
   let result = await collection.updateOne({userId: user }, {$set: {list: list}})
+  console.log(result)
   return result
 }
 
 export default async (req, res) => {
-  if (req.method === 'POST') {
+  if (req.method === 'PUT') {
     client.connect(function() {
 
       console.log('Connected to MongoDB server =>')
