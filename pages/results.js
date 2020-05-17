@@ -4,27 +4,26 @@ import usePersistedState from '../hooks/usePersistedState'
 import {Col, Row} from 'reactstrap'
 import useSWR from 'swr'
 import cookie from 'js-cookie'
-import LoginForm from '../components/Login'
-import SignupForm from '../components/SignUp'
+import Link from 'next/link'
 
 export default function LocalStateResults () {
   const [localStateItems, _] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
   const donate = localStateValues.filter( item => item.rating <= 3)
   const keep = localStateValues.filter( item => item.rating > 3)
-  let loggedIn = false
 
   const {data, revalidate} = useSWR('/api/me', async function(args) {
     const res = await fetch(args)
-    return res.json()
+    const data = res.json()
+    
+    return data;
   })
-  if(!data) {
-    loggedIn = false
+  let loggedIn = false
+
+  if (!data) {
     console.log('no data')
-  }
-  else if (data.userId) {
-    loggedIn = true
-    console.log('logged in')
+  } else if (data.userId) {
+    loggedIn = true;
   }
 
   function handleSubmit(e) {
@@ -60,28 +59,21 @@ export default function LocalStateResults () {
           }
         </div>
         <button type='submit' onClick={handleSubmit}>Save</button>
-        {!loggedIn &&
-          <div class="alert alert-warning" role="alert">
-            Sign up or Login to save list
-          </div>
-        }
         </Col>
         <Col lg="3" md="2">
-          {!loggedIn
-          ?
-          <div>
-            <LoginForm />
-            <SignupForm />
-          </div>
-          :
-          <button
-          onClick={() => {
-            cookie.remove('token')
-            revalidate()
-          }}
-          >
-            Logout
-          </button>
+          {loggedIn &&
+          <Link href='/'>
+            <a>
+              <button
+                onClick={() => {
+                  cookie.remove('token')
+                  revalidate()
+                }}
+              >
+                Logout
+              </button>
+            </a>
+          </Link>
           }
           </Col>
         </Row>
