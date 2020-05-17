@@ -10,35 +10,14 @@ import {
   ModalFooter
 } from 'reactstrap'
 import cookie from 'js-cookie'
-import Link from 'next/link'
+import { mutate } from 'swr'
 import useToggle from '../hooks/useToggle'
-import usePersistedState from '../hooks/usePersistedState'
 
-const LoggedInChoice = ({databaseItems, toggleLoginModal}) => {
-  const [_, setLocalItems] = usePersistedState('items', 'nothing')
-
-  return (
-    <>
-      <ModalHeader>You have an existing list</ModalHeader>
-      <ModalBody>
-        <Link href='/results'>
-          <a>
-            <button onClick={() => setLocalItems(databaseItems)}>Go to my list</button>
-          </a>
-        </Link>
-        <button onClick={toggleLoginModal}>Create a new list</button>
-      </ModalBody>
-    </>
-  )
-}
-
-function LoginForm () {
+function LoginForm ({setDatabaseItems}) {
   const [loginError, setLoginError] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginModalOpen, toggleLoginModal] = useToggle()
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [databaseItems, setDatabaseItems] = useState()
 
   const handleCloseClick = useCallback(() => {
     setEmail()
@@ -69,19 +48,19 @@ function LoginForm () {
         // checks if user has logged in and has an object of items
         if (data && data.token && Object.keys(data.listData).length !== 0) {
           setDatabaseItems(data.listData)
-          setLoggedIn(true)
           cookie.set('token', data.token, {expires: 2})
           // resets field data & closes modal
           setEmail()
           setPassword()
+          mutate('/api/me')
         // if user only has an empty object of items, close modal
         } else if (data && data.token) {
-          setLoggedIn(true)
           cookie.set('token', data.token, {expires: 2})
           // resets field data & closes modal
           setEmail()
           setPassword()
           toggleLoginModal()
+          mutate('/api/me')
         }
       })
   }
@@ -95,8 +74,6 @@ function LoginForm () {
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
       >
-        {loggedIn ? 
-        <LoggedInChoice databaseItems={databaseItems} toggleLoginModal={toggleLoginModal} /> : 
         <Form onSubmit={handleSubmit}>
           <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
             Login
@@ -130,7 +107,6 @@ function LoginForm () {
             {loginError && <p style={{color: 'red'}}>{loginError}</p>}
           </ModalBody>
         </Form>
-        }
       </Modal>
     </>
   )

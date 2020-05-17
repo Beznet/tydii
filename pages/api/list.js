@@ -13,19 +13,17 @@ async function insertList(db, user, list) {
 
 export default async (req, res) => {
   if (req.method === 'PUT') {
-    client.connect( async function () {
-      console.log('Connected to MongoDB server =>')
-      const db = client.db(process.env.DB_NAME)
-      const user = req.body.user
-      const list = req.body.list
-      try {
-        const responseResult = await insertList(db, user, list)
-        res.status(201).json({ success: true, data: responseResult })
-      }
-      catch (err) {
-        res.status(400).json({ error: true, message: "There was an error with this request" })
-      }
-      return
-    })
+    await client.connect();
+    console.log('Connected to MongoDB server =>')
+    const db = client.db(process.env.DB_NAME)
+    const user = req.body.user
+    const list = req.body.list
+    try {
+      const responseResult = await insertList(db, user, list)
+      res.status(201).json({ success: true, data: responseResult })
+    }
+    catch (err) {
+      res.status(400).json({ error: true, message: "There was an error with this request" })
+    }
   }
 }

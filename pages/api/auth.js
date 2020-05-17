@@ -47,6 +47,7 @@ export default (req, res) => {
           authUser(db, email, password, user.password, function(err, match) {
             if (err) {
               res.status(500).json({error: true, message: 'Auth Failed'})
+              return
             }
             if (match) {
               const listData = user.list
