@@ -14,10 +14,6 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
           Add items you're unsure about keeping. Think about each one then rate
           that item on how happy it makes you feel.
         </h4>
-        <br />
-        <h4>
-          TIP: Sign up so you can save your items you are in the process of donating or selling!
-        </h4>
       </Col>
     ) : (
       items.map(item => {

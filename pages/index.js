@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import '../styles/style.css'
-import { 
+import {
+  Alert,
   Col, 
   Row,
   Modal,
@@ -20,12 +21,43 @@ import Link from 'next/link'
 import usePersistedState from '../hooks/usePersistedState'
 import useToggle from '../hooks/useToggle'
 
-const LocalStateButton = ({items}) => {
+const TydiiButton = ({items, loggedIn}) => {
   const localItems = {...items}
   const [_, setLocalItems] = usePersistedState('items', 'nothing')
+  const [buttonModal, toggleButtonModal] = useToggle(false)
 
+  // my dumb way of rendering a button with a link or a modal depending on if you're logged in or not
   return (
-    <button id="tydi-button" type="submit" onClick={() => setLocalItems(localItems)}>Tydii Up!</button>
+    <>
+    {!loggedIn ?
+      <>
+        <button 
+          id="tydi-button" 
+          type="submit" 
+          onClick={toggleButtonModal}>
+            Tydii Up!
+        </button>
+        <Modal centered toggle={() => toggleButtonModal(!buttonModal)} isOpen={buttonModal}>
+          <ModalBody>
+            Login or Signup
+          </ModalBody>
+        </Modal>
+      </>
+      :
+      <>
+        <Link href='/results'>
+          <a>
+            <button 
+              id="tydi-button" 
+              type="submit" 
+              onClick={() => setLocalItems(localItems)}>
+                Tydii Up!
+            </button>
+          </a>
+        </Link>
+      </>
+    }
+    </>
   )
 }
 
@@ -61,8 +93,7 @@ export default function Index() {
     
     return data;
   })
-  //const [loggedIn, setLoggedIn] = useState(!!data && !!data.userId)
-  const [listData, _] = useState([])
+
   let loggedIn = false
 
   if (!data) {
@@ -97,9 +128,7 @@ export default function Index() {
           {typeof window !== 'undefined' 
             ? <Row>
                 <Col className="text-center mt-3">
-                  <Link href='/results'>
-                    <a><LocalStateButton items={items} databaseList={listData}/></a>
-                  </Link>
+                  <TydiiButton loggedIn={loggedIn} items={items}/>
                 </Col>
               </Row> 
             : ''}
