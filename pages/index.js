@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import '../styles/style.css'
 import {
-  Alert,
   Col, 
   Row,
   Modal,
@@ -39,7 +38,7 @@ const TydiiButton = ({items, loggedIn}) => {
         </button>
         <Modal centered toggle={() => toggleButtonModal(!buttonModal)} isOpen={buttonModal}>
           <ModalBody>
-            Login or Signup
+            Signup or Login to see your results
           </ModalBody>
         </Modal>
       </>
@@ -102,8 +101,6 @@ export default function Index() {
     loggedIn = true;
   }
 
-  console.log(databaseItems)
-
   return (
     <Layout>
       <Row>
@@ -143,15 +140,6 @@ export default function Index() {
         :
         <>
           {databaseItems && <LoggedInChoice databaseItems={databaseItems} />}
-          <button
-          className='m-1 badge badge-pill shadow-sm'
-          onClick={() => {
-            cookie.remove('token')
-            revalidate()
-          }}
-          >
-            Logout
-          </button>
         </>
         }
         </Col>
