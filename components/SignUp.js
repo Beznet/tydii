@@ -10,6 +10,7 @@ import {
   ModalFooter
 } from 'reactstrap'
 import cookie from 'js-cookie'
+import { mutate } from 'swr'
 import useToggle from '../hooks/useToggle'
 import handleSubmit from '../calls/rest'
 
@@ -40,6 +41,7 @@ function SignupForm () {
           setEmail()
           setPassword()
           toggleSignupModal()
+          mutate('/api/me')
         }
       })
   }
