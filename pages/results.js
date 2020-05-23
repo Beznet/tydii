@@ -9,6 +9,7 @@ import {
   DropdownMenu, 
   DropdownItem
 } from 'reactstrap'
+import useSWR from 'swr'
 
 const DonateSellDropdown = ({item}) => {
   const newItem = {...item}
@@ -35,6 +36,12 @@ export default function LocalStateResults () {
   const [localStateItems, _] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
   const items = localStateValues.filter( item => item.rating <= 3)
+  const {data} = useSWR('/api/me', async function(args) {
+    const res = await fetch(args)
+    const data = res.json()
+  
+    return data;
+  })
 
   function handleSubmit(e) {
     e.preventDefault()

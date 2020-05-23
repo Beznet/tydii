@@ -41,7 +41,6 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
                 xs="6"
               >
                 <Slider
-                  className=""
                   value={item.rating}
                   onValueChange={updateValueHandler}
                 />

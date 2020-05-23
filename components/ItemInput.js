@@ -4,6 +4,7 @@ import useInputState from './useInputState'
 
 const ItemInput = ({ saveItem }) => {
   const { value, reset, onChange } = useInputState('')
+
   const itemSubmit = event => {
     event.preventDefault()
     saveItem(value)
