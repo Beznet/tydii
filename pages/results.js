@@ -1,12 +1,40 @@
 import Layout from '../components/Layout'
 import React from 'react'
 import usePersistedState from '../hooks/usePersistedState'
-import {Col, Row} from 'reactstrap'
+import {
+  Col, 
+  Row,
+  UncontrolledDropdown, 
+  DropdownToggle, 
+  DropdownMenu, 
+  DropdownItem
+} from 'reactstrap'
+
+const DonateSellDropdown = ({item}) => {
+  const newItem = {...item}
+
+  const handleClick = (e) => {
+    const value = e.target.value
+    return newItem.completed = value
+  }
+
+  return (
+    <UncontrolledDropdown>
+    <DropdownToggle caret>
+      Still Owned
+    </DropdownToggle>
+    <DropdownMenu>
+      <DropdownItem value='sold' onClick={handleClick}>Sold</DropdownItem>
+      <DropdownItem value='donated' onClick={handleClick}>Donated</DropdownItem>
+    </DropdownMenu>
+  </UncontrolledDropdown>
+  )
+}
 
 export default function LocalStateResults () {
   const [localStateItems, _] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
-  const donate = localStateValues.filter( item => item.rating <= 3)
+  const items = localStateValues.filter( item => item.rating <= 3)
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -23,6 +51,8 @@ export default function LocalStateResults () {
       .then((r) => r.json())
   }
 
+  console.log(items)
+
   return (
     <Layout>
       <Row>
@@ -30,7 +60,11 @@ export default function LocalStateResults () {
         <div>
           <h2>Donate or Sell</h2>
           {
-            donate.map( item => <li>{item.name}</li>)
+            items.map( item => 
+              <li>
+                {item.name}
+                <DonateSellDropdown item={item} />
+              </li>)
           }
         </div>
         <button type='submit' onClick={handleSubmit}>Save</button>

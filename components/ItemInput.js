@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, FormGroup, Input } from 'reactstrap'
 import useInputState from './useInputState'
 
-const ItemForm = ({ saveItem }) => {
+const ItemInput = ({ saveItem }) => {
   const { value, reset, onChange } = useInputState('')
   const itemSubmit = event => {
     event.preventDefault()
@@ -33,4 +33,4 @@ const ItemForm = ({ saveItem }) => {
   )
 }
 
-export default ItemForm
+export default ItemInput

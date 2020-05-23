@@ -8,7 +8,7 @@ import {
   ModalBody
 } from 'reactstrap'
 import Layout from '../components/Layout'
-import ItemForm from '../components/ItemForm'
+import ItemInput from '../components/ItemInput'
 import ItemList from '../components/ItemList'
 import useItemState from '../components/useItemState'
 import fetch from 'isomorphic-unfetch'
@@ -38,7 +38,7 @@ const TydiiButton = ({items, loggedIn}) => {
         </button>
         <Modal centered toggle={() => toggleButtonModal(!buttonModal)} isOpen={buttonModal}>
           <ModalBody>
-            Signup or Login to see your results
+            Sign up or login to see your results
           </ModalBody>
         </Modal>
       </>
@@ -107,7 +107,7 @@ export default function Index() {
         <Col lg="3" md="2"></Col>
         <Col className="align-items-center" lg="6" md="8">
           <div className="form-box">
-            <ItemForm
+            <ItemInput
               saveItem={itemText => {
                 const trimmedText = itemText.trim()
 

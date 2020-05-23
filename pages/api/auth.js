@@ -14,7 +14,6 @@ function findUser(db, email, callback) {
 }
 
 function authUser(db, email, password, hash, callback) {
-  const collection = db.collection('user')
   bcrypt.compare(password, hash, callback)
 }
 
