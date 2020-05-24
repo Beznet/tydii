@@ -10,7 +10,7 @@ import {
 import Layout from '../components/Layout'
 import ItemInput from '../components/ItemInput'
 import ItemList from '../components/ItemList'
-import useItemState from '../components/useItemState'
+import useItemState from '../hooks/useItemState'
 import fetch from 'isomorphic-unfetch'
 import useSWR from 'swr'
 import cookie from 'js-cookie'

@@ -10,7 +10,7 @@ import {
   DropdownItem
 } from 'reactstrap'
 import useSWR from 'swr'
-import useItemState from '../components/useItemState'
+import useItemState from '../hooks/useItemState'
 
 const DonateSellDropdown = ({updateItem, item}) => {
   const handleClick = (e) => {
@@ -66,7 +66,6 @@ export default function LocalStateResults () {
     <Layout>
       <Row>
         <Col lg="4" md="2">
-        <div>
           <h2>Donate or Sell</h2>
           {
             items.map( item => 
@@ -75,7 +74,6 @@ export default function LocalStateResults () {
                 <DonateSellDropdown updateItem={updateItem} item={item} />
               </li>)
           }
-        </div>
         <button type='submit' onClick={handleSubmit}>Save</button>
         </Col>
         <Col lg="4" md="2">

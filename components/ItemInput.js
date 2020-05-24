@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, FormGroup, Input } from 'reactstrap'
-import useInputState from './useInputState'
+import useInputState from '../hooks/useInputState'
 
 const ItemInput = ({ saveItem }) => {
   const { value, reset, onChange } = useInputState('')
