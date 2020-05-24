@@ -25,8 +25,6 @@ const generateNewItem = name => {
 const updateItem = (items, updatedItem) => {
   const itemIndex = items.findIndex(item => item.id === updatedItem.id)
 
-  console.log('Update Item', items)
-
   if (itemIndex === -1) return items
 
   const newItems = [

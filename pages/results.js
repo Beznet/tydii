@@ -10,19 +10,20 @@ import {
   DropdownItem
 } from 'reactstrap'
 import useSWR from 'swr'
+import useItemState from '../components/useItemState'
 
-const DonateSellDropdown = ({item}) => {
-  const newItem = {...item}
-
+const DonateSellDropdown = ({updateItem, item}) => {
   const handleClick = (e) => {
-    const value = e.target.value
-    return newItem.completed = value
+    const result = e.target.value
+    updateItem(Object.assign({}, item, { result }))
   }
+
+  const dropDownTitle = item.result
 
   return (
     <UncontrolledDropdown>
     <DropdownToggle caret>
-      Still Owned
+      {dropDownTitle}
     </DropdownToggle>
     <DropdownMenu>
       <DropdownItem value='sold' onClick={handleClick}>Sold</DropdownItem>
@@ -35,7 +36,8 @@ const DonateSellDropdown = ({item}) => {
 export default function LocalStateResults () {
   const [localStateItems, _] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
-  const items = localStateValues.filter( item => item.rating <= 3)
+  const filteredLocalItems = localStateValues.filter( item => item.rating <= 3)
+  const { items, deleteItem, updateItem } = useItemState(filteredLocalItems)
   const {data} = useSWR('/api/me', async function(args) {
     const res = await fetch(args)
     const data = res.json()
@@ -52,7 +54,7 @@ export default function LocalStateResults () {
       },
       body: JSON.stringify({
         user: data.userId,
-        list: localStateItems
+        list: items
       }),
     })
       .then((r) => r.json())
@@ -70,7 +72,7 @@ export default function LocalStateResults () {
             items.map( item => 
               <li>
                 {item.name}
-                <DonateSellDropdown item={item} />
+                <DonateSellDropdown updateItem={updateItem} item={item} />
               </li>)
           }
         </div>
