@@ -44,7 +44,6 @@ export default initialValue => {
       setItems([...items, generateNewItem(itemText)])
     },
     updateItem: updatedItem => {
-      console.log('UPDATED ITEM', updatedItem)
       const updatedItemList = updateItem(items, updatedItem)
       setItems(updatedItemList)
     },
