@@ -55,27 +55,39 @@ const DonateSellResults = ({ items, updateItem }) => (
   </>
 )
 
-const DonatedItems = ({ items }) => (
+const DonatedItems = ({ items }) => {
+  const donatedArray = items.filter( item => item.result === 'donated')
+  return (
   <Row className='result-box mb-4'>
     <Col className='text-center'>
       <h2>Donated</h2>
       {
-        items.map(item => item.result === 'donated' && <h5 className='item'>{item.name}</h5>)
+        donatedArray.length === 0 ?
+        <div className='placeholder-text mt-5'>
+          <h4>Nothing donated yet</h4>
+        </div> :
+        donatedArray.map(item => <h5 className='item'>{item.name}</h5>)
       }
     </Col>
   </Row>
-)
+)}
 
-const SoldItems = ({ items }) => (
+const SoldItems = ({ items }) => {
+  const soldArray = items.filter( item => item.result === 'sold')
+  return (
   <Row className='result-box'>
     <Col className='text-center'>
       <h2>Sold</h2>
       {
-        items.map(item => item.result === 'sold' && <h5 className='item'>{item.name}</h5>)
+        soldArray.length === 0 ?
+        <div className='placeholder-text mt-5'>
+          <h4>Nothing sold yet</h4>
+        </div> :
+        soldArray.map(item => <h5 className='item'>{item.name}</h5>)
       }
     </Col>
   </Row>
-)
+)}
 
 export default function LocalStateResults() {
   const [localStateItems, _] = usePersistedState('items', {})
