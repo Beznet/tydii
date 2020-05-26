@@ -35,50 +35,53 @@ const DonateSellDropdown = ({ updateItem, item }) => {
   )
 }
 
-const DonateSellResults = ({ items, updateItem, handleSubmit }) => (
-  <Col lg="4" md="2">
+const DonateSellResults = ({ items, updateItem }) => (
+  <>
     <h2>Donate or Sell</h2>
     {
       items.map(item => (
         <Row className="d-flex-inline mb-2">
-          <Col className="d-flex-inline" xs='6'>
+          <Col className="d-flex-inline" xs='8'>
             <h5>
               {item.result !== 'owned' ? <s>{item.name}</s> : item.name}
             </h5>
           </Col>
-          <Col className="d-flex-inline" xs='6'>
+          <Col className="d-flex-inline" xs='4'>
             <DonateSellDropdown updateItem={updateItem} item={item} />
           </Col>
         </Row>
       ))
     }
-    <button type='submit' onClick={handleSubmit}>Save</button>
-  </Col>
+  </>
 )
 
 const DonatedItems = ({ items }) => (
-  <Col lg="4" md="2">
-    <h2>Donated Items</h2>
-    {
-      items.map(item => item.result === 'donated' && <h5 className='item'>{item.name}</h5>)
-    }
-  </Col>
+  <Row className='result-box mb-4'>
+    <Col className='text-center'>
+      <h2>Donated</h2>
+      {
+        items.map(item => item.result === 'donated' && <h5 className='item'>{item.name}</h5>)
+      }
+    </Col>
+  </Row>
 )
 
 const SoldItems = ({ items }) => (
-  <Col lg="4" md="2">
-    <h2>Sold Items</h2>
-    {
-      items.map(item => item.result === 'sold' && <h5 className='item'>{item.name}</h5>)
-    }
-  </Col>
+  <Row className='result-box'>
+    <Col className='text-center'>
+      <h2>Sold</h2>
+      {
+        items.map(item => item.result === 'sold' && <h5 className='item'>{item.name}</h5>)
+      }
+    </Col>
+  </Row>
 )
 
 export default function LocalStateResults() {
   const [localStateItems, _] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
   const filteredLocalItems = localStateValues.filter(item => item.rating <= 3)
-  const { items, deleteItem, updateItem } = useItemState(filteredLocalItems)
+  const { items, updateItem } = useItemState(filteredLocalItems)
   const { data } = useSWR('/api/me', async function (args) {
     const res = await fetch(args)
     const data = res.json()
@@ -101,15 +104,21 @@ export default function LocalStateResults() {
       .then((r) => r.json())
   }
 
-  console.log(data)
-
   return (
     <Layout>
       <Row>
-        <DonateSellResults items={items} updateItem={updateItem} handleSubmit={handleSubmit} />
-        <DonatedItems items={items} />
-        <SoldItems items={items} />
+        <Col className='result-box text-center mr-3' lg="4" md="2">
+          <DonateSellResults items={items} updateItem={updateItem} />
+        </Col>
+        <Col lg="4" md="2">
+          <DonatedItems items={items} />
+          <SoldItems items={items} />
+        </Col>
+        <Col className='resource-box ml-3 my-auto text-center' >
+          <h3>Resources</h3>
+        </Col>
       </Row>
+      <button className='w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
     </Layout>
   )
 }

@@ -94,6 +94,23 @@ h1 span {
   min-height: 500px;
 }
 
+.result-box {
+  background: var(--smokey-white);
+  color: #0a0a0a;
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  box-shadow: 5px 5px 0px 0px #888888;
+  min-height: 300px;
+}
+
+.resource-box {
+  background: var(--smokey-white);
+  color: #0a0a0a;
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  box-shadow: 5px 5px 0px 0px #888888;
+  min-height: 250px;
+}
+
+
 .list-group {
   background: var(--smokey-white);
   border: 1px solid hsl(246.9, 14.6%, 53.1%);
