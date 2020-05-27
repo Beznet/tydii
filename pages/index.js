@@ -13,7 +13,6 @@ import ItemList from '../components/ItemList'
 import useItemState from '../hooks/useItemState'
 import fetch from 'isomorphic-unfetch'
 import useSWR from 'swr'
-import cookie from 'js-cookie'
 import LoginForm from '../components/Login'
 import SignupForm from '../components/SignUp'
 import Link from 'next/link'
@@ -86,7 +85,7 @@ const LoggedInChoice = ({databaseItems}) => {
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([])
   const [databaseItems, setDatabaseItems] = useState()
-  const {data, revalidate} = useSWR('/api/me', async function(args) {
+  const {data} = useSWR('/api/me', async function(args) {
     const res = await fetch(args)
     const data = res.json()
     
