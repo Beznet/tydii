@@ -94,10 +94,8 @@ export default function LocalStateResults() {
   const localStateValues = Object.values(localStateItems)
   const filteredLocalItems = localStateValues.filter(item => item.rating <= 3)
   const { items, updateItem } = useItemState(filteredLocalItems)
-  const { data } = useSWR('/api/me', async function (args) {
-    const res = await fetch(args)
-    const data = res.json()
-
+  const { data } = useSWR('/api/me', async function () {
+    const data = await res.json()
     return data;
   })
 
