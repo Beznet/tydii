@@ -1,5 +1,5 @@
 import Layout from '../components/Layout'
-import React from 'react'
+import React, { useState } from 'react'
 import usePersistedState from '../hooks/usePersistedState'
 import {
   Col,
@@ -7,7 +7,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Alert
 } from 'reactstrap'
 import useSWR from 'swr'
 import useItemState from '../hooks/useItemState'
@@ -94,13 +95,16 @@ export default function LocalStateResults() {
   const localStateValues = Object.values(localStateItems)
   const filteredLocalItems = localStateValues.filter(item => item.rating <= 3)
   const { items, updateItem } = useItemState(filteredLocalItems)
+  const [visibleAlert, setVisibleAlert] = useState(false);
   const { data } = useSWR('/api/me', async function () {
     const data = await res.json()
     return data;
   })
 
   function handleSubmit(e) {
+    // set local state to keep data on refresh
     setLocalStateItems(items)
+    // save to database
     e.preventDefault()
     fetch('/api/list', {
       method: 'PUT',
@@ -113,6 +117,7 @@ export default function LocalStateResults() {
       }),
     })
       .then((r) => r.json())
+      .then(setVisibleAlert(true))
   }
 
   return (
@@ -130,6 +135,7 @@ export default function LocalStateResults() {
         </Col>
       </Row>
       <button className='w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
+      <Alert className='w-25' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>
     </Layout>
   )
 }
