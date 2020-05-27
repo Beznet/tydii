@@ -90,7 +90,7 @@ const SoldItems = ({ items }) => {
 )}
 
 export default function LocalStateResults() {
-  const [localStateItems, _] = usePersistedState('items', {})
+  const [localStateItems, setLocalStateItems] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
   const filteredLocalItems = localStateValues.filter(item => item.rating <= 3)
   const { items, updateItem } = useItemState(filteredLocalItems)
@@ -100,6 +100,7 @@ export default function LocalStateResults() {
   })
 
   function handleSubmit(e) {
+    setLocalStateItems(items)
     e.preventDefault()
     fetch('/api/list', {
       method: 'PUT',
