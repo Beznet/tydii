@@ -8,10 +8,15 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Alert
+  Alert,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
 } from 'reactstrap'
 import useSWR from 'swr'
 import useItemState from '../hooks/useItemState'
+import useToggle from '../hooks/useToggle'
 
 const DonateSellDropdown = ({ updateItem, item }) => {
 
@@ -90,6 +95,34 @@ const SoldItems = ({ items }) => {
   </Row>
 )}
 
+const InstructionsModal = () => {
+  const [instructionModal, toggleInstructionModal] = useToggle(true)
+
+  return (
+    <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
+      <ModalHeader className='justify-content-center'>
+        <h2>Time to clean up</h2>
+      </ModalHeader>
+      <ModalBody>
+        Here you'll find the items that you weren't completely happy with from your ratings.
+        As you donate and sell your things, keep track of them here and sort them as
+        you go. Check out our resources if you need help figuring out how to go about
+        donating or selling your stuff. Its time to Tydii up!
+      </ModalBody>
+      <ModalFooter>
+      <Col className="quote text-center mt-5" xs="12">
+        “It is the preoccupation with possessions that prevents us
+        from living freely and nobly.”
+        <Col className="blockquote-footer" xs="12">
+          Bertrand Russell
+        </Col>
+      </Col>
+      </ModalFooter>
+    </Modal>
+  )
+
+}
+
 export default function LocalStateResults() {
   const [localStateItems, setLocalStateItems] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
@@ -122,6 +155,7 @@ export default function LocalStateResults() {
 
   return (
     <Layout>
+      <InstructionsModal />
       <Row>
         <Col className='result-box text-center mr-3' lg="4" md="2">
           <DonateSellResults items={items} updateItem={updateItem} />
