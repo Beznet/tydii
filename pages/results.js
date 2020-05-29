@@ -168,8 +168,12 @@ export default function LocalStateResults() {
           <h3>Resources</h3>
         </Col>
       </Row>
-      <button className='w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
-      <Alert className='w-25' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>
+      <Row>
+        <Col className='d-flex justify-content-center'>
+          <button className='w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
+          <Alert className='w-25' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>
+        </Col>
+      </Row>
     </Layout>
   )
 }

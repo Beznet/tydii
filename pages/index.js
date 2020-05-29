@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import '../styles/style.css'
 import {
-  Col, 
+  Col,
   Row,
   Modal,
   ModalHeader,
-  ModalBody
+  ModalBody,
+  Alert
 } from 'reactstrap'
 import Layout from '../components/Layout'
 import ItemInput from '../components/ItemInput'
@@ -18,48 +19,55 @@ import SignupForm from '../components/SignUp'
 import Link from 'next/link'
 import usePersistedState from '../hooks/usePersistedState'
 import useToggle from '../hooks/useToggle'
+import Router from 'next/router'
 
-const TydiiButton = ({items, loggedIn}) => {
-  const localItems = {...items}
+const TydiiButton = ({ items, loggedIn, toggleHighRatedAlert }) => {
+  const localItems = { ...items }
   const [_, setLocalItems] = usePersistedState('items', 'nothing')
   const [buttonModal, toggleButtonModal] = useToggle(false)
+
+  const handleSubmit = () => {
+    // throws an alert if they rated every item above 3 to prevent nothing from showing on the results
+    if (items.every(item => item.rating > 3)) {
+      toggleHighRatedAlert()
+    } else {
+      setLocalItems(localItems)
+      Router.push('/results')
+    }
+  }
 
   // my dumb way of rendering a button with a link or a modal depending on if you're logged in or not
   return (
     <>
-    {!loggedIn ?
-      <>
-        <button 
-          id="tydi-button" 
-          type="submit" 
-          onClick={toggleButtonModal}>
+      {!loggedIn ?
+        <>
+          <button
+            id="tydi-button"
+            type="submit"
+            onClick={toggleButtonModal}>
             Tydii Up!
         </button>
-        <Modal centered toggle={() => toggleButtonModal(!buttonModal)} isOpen={buttonModal}>
-          <ModalBody>
-            Sign up or login to see your results
+          <Modal centered toggle={toggleButtonModal} isOpen={buttonModal}>
+            <ModalBody>
+              Sign up or login to see your results
           </ModalBody>
-        </Modal>
-      </>
-      :
-      <>
-        <Link href='/results'>
-          <a>
-            <button 
-              id="tydi-button" 
-              type="submit" 
-              onClick={() => setLocalItems(localItems)}>
-                Tydii Up!
+          </Modal>
+        </>
+        :
+        <>
+          <button
+            id="tydi-button"
+            type="submit"
+            onClick={handleSubmit}>
+            Tydii Up!
             </button>
-          </a>
-        </Link>
-      </>
-    }
+        </>
+      }
     </>
   )
 }
 
-const LoggedInChoice = ({databaseItems}) => {
+const LoggedInChoice = ({ databaseItems }) => {
   const [_, setLocalItems] = usePersistedState('items', 'nothing')
   const [choiceModalOpen, toggleChoiceModal] = useToggle(true)
 
@@ -68,7 +76,7 @@ const LoggedInChoice = ({databaseItems}) => {
       isOpen={choiceModalOpen}
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
-      >
+    >
       <ModalHeader>You have an existing list</ModalHeader>
       <ModalBody>
         <Link href='/results'>
@@ -85,10 +93,11 @@ const LoggedInChoice = ({databaseItems}) => {
 export default function Index() {
   const { items, addItem, deleteItem, updateItem } = useItemState([])
   const [databaseItems, setDatabaseItems] = useState()
-  const {data} = useSWR('/api/me', async function(args) {
+  const [highRatedAlert, toggleHighRatedAlert] = useToggle()
+  const { data } = useSWR('/api/me', async function (args) {
     const res = await fetch(args)
     const data = res.json()
-    
+
     return data;
   })
 
@@ -121,26 +130,27 @@ export default function Index() {
               updateItem={updateItem}
             />
           </div>
-          {typeof window !== 'undefined' 
+          {typeof window !== 'undefined'
             ? <Row>
-                <Col className="text-center mt-3">
-                  <TydiiButton loggedIn={loggedIn} items={items}/>
-                </Col>
-              </Row> 
+              <Col className="text-center mt-3">
+                <TydiiButton loggedIn={loggedIn} items={items} toggleHighRatedAlert={toggleHighRatedAlert} />
+                <Alert color='warning' isOpen={highRatedAlert} toggle={toggleHighRatedAlert} >You rated everything too well! Think a bit harder...</Alert>
+              </Col>
+            </Row>
             : ''}
         </Col>
         <Col lg="3" md="2">
-        {!loggedIn
-        ?
-        <div className='d-flex flex-column w-50'>
-          <SignupForm />
-          <LoginForm setDatabaseItems={setDatabaseItems} />
-        </div>
-        :
-        <>
-          {databaseItems && <LoggedInChoice databaseItems={databaseItems} />}
-        </>
-        }
+          {!loggedIn
+            ?
+            <div className='d-flex flex-column w-50'>
+              <SignupForm />
+              <LoginForm setDatabaseItems={setDatabaseItems} />
+            </div>
+            :
+            <>
+              {databaseItems && <LoggedInChoice databaseItems={databaseItems} />}
+            </>
+          }
         </Col>
       </Row>
     </Layout>
