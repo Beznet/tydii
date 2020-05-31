@@ -170,10 +170,10 @@ export default function LocalStateResults() {
           <h3>Resources</h3>
         </Col>
       </Row>
-      <Row>
-        <Col className='d-flex justify-content-center'>
+      <Row className='d-flex flex-column'>
+        <Col className='text-center'>
           <button className='w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
-          <Alert className='w-25' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>
+          <Alert className='text-center mx-auto w-25' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>
         </Col>
       </Row>
     </Layout>
