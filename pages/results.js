@@ -62,38 +62,40 @@ const DonateSellResults = ({ items, updateItem }) => (
 )
 
 const DonatedItems = ({ items }) => {
-  const donatedArray = items.filter( item => item.result === 'donated')
+  const donatedArray = items.filter(item => item.result === 'donated')
   return (
-  <Row className='result-box mb-4'>
-    <Col className='text-center'>
-      <h2>Donated</h2>
-      {
-        donatedArray.length === 0 ?
-        <div className='placeholder-text mt-5'>
-          <h4>Nothing donated yet</h4>
-        </div> :
-        donatedArray.map(item => <h5 className='item'>{item.name}</h5>)
-      }
-    </Col>
-  </Row>
-)}
+    <Row className='result-box mb-4'>
+      <Col className='text-center'>
+        <h2>Donated</h2>
+        {
+          donatedArray.length === 0 ?
+            <div className='placeholder-text mt-5'>
+              <h4>Nothing donated yet</h4>
+            </div> :
+            donatedArray.map(item => <h5 className='item'>{item.name}</h5>)
+        }
+      </Col>
+    </Row>
+  )
+}
 
 const SoldItems = ({ items }) => {
-  const soldArray = items.filter( item => item.result === 'sold')
+  const soldArray = items.filter(item => item.result === 'sold')
   return (
-  <Row className='result-box'>
-    <Col className='text-center'>
-      <h2>Sold</h2>
-      {
-        soldArray.length === 0 ?
-        <div className='placeholder-text mt-5'>
-          <h4>Nothing sold yet</h4>
-        </div> :
-        soldArray.map(item => <h5 className='item'>{item.name}</h5>)
-      }
-    </Col>
-  </Row>
-)}
+    <Row className='result-box'>
+      <Col className='text-center'>
+        <h2>Sold</h2>
+        {
+          soldArray.length === 0 ?
+            <div className='placeholder-text mt-5'>
+              <h4>Nothing sold yet</h4>
+            </div> :
+            soldArray.map(item => <h5 className='item'>{item.name}</h5>)
+        }
+      </Col>
+    </Row>
+  )
+}
 
 const InstructionsModal = () => {
   const [instructionModal, toggleInstructionModal] = useToggle(true)
@@ -110,13 +112,13 @@ const InstructionsModal = () => {
         donating or selling your stuff. Its time to Tydii up!
       </ModalBody>
       <ModalFooter>
-      <Col className="quote text-center mt-5" xs="12">
-        “It is the preoccupation with possessions that prevents us
-        from living freely and nobly.”
+        <Col className="quote text-center mt-5" xs="12">
+          “It is the preoccupation with possessions that prevents us
+          from living freely and nobly.”
         <Col className="blockquote-footer" xs="12">
-          Bertrand Russell
+            Bertrand Russell
         </Col>
-      </Col>
+        </Col>
       </ModalFooter>
     </Modal>
   )

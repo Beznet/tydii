@@ -1,4 +1,4 @@
-import React , { useRef } from 'react'
+import React, { useRef } from 'react'
 
 const faceImages = [
   '',
@@ -14,7 +14,7 @@ const Slider = ({ value, onValueChange }) => {
   const onChange = e => {
     onValueChange(e.target.value)
     ref.current.classList.add("bounce")
-    setTimeout(()=> ref.current.classList.remove("bounce"), 200)
+    setTimeout(() => ref.current.classList.remove("bounce"), 200)
   }
 
   return (

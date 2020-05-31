@@ -12,16 +12,16 @@ export default function About() {
       </p>
       <p>
         Around the same time a show came out on Netflix called Tyding Up with Marie Kondo. I watched the first
-        episode and thought her process of item sorting was really unique. What I took most from her process was 
+        episode and thought her process of item sorting was really unique. What I took most from her process was
         thinking of each item and associating how much joy it gives you. Expanding upon Marie's idea, I wrote down
         each item I was unsure about keeping and next to each one would rate them between 1-5 on how happy
         they made me feel. After going through this exercise it made me realize that most of the items
-        had fairly low levels of happiness. Another benefit was thinking about each item individually and not being 
+        had fairly low levels of happiness. Another benefit was thinking about each item individually and not being
         overwhelmed by all of them as a whole when trying to decide which ones to keep.
       </p>
       <p>
         Out of this process came my idea for Tydii, just a simple and pleasing way to sort your items that you
-        are unsure about keeping. I hope this little idea has helped you make your life a little more clean and 
+        are unsure about keeping. I hope this little idea has helped you make your life a little more clean and
         organized.
       </p>
       <span className="icon-credits mt-auto">

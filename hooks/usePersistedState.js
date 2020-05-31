@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 // checks if the client has window to access localStorage API
 const hasLocalStorage = () => (typeof window !== "undefined") && window.localStorage

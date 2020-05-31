@@ -1,13 +1,13 @@
 const { MongoClient } = require('mongodb')
 
 const client = new MongoClient(process.env.URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 async function insertList(db, user, list) {
   const collection = db.collection('user')
-  let result = await collection.updateOne({userId: user }, {$set: {list: list}})
+  let result = await collection.updateOne({ userId: user }, { $set: { list: list } })
   return result
 }
 
