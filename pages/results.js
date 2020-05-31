@@ -12,7 +12,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  Progress
 } from 'reactstrap'
 import useSWR from 'swr'
 import useItemState from '../hooks/useItemState'
@@ -44,6 +45,7 @@ const DonateSellDropdown = ({ updateItem, item }) => {
 const DonateSellResults = ({ items, updateItem }) => (
   <>
     <h2>Donate or Sell</h2>
+    <hr />
     {
       items.map(item => (
         <Row className="d-flex-inline mb-2">
@@ -61,12 +63,12 @@ const DonateSellResults = ({ items, updateItem }) => (
   </>
 )
 
-const DonatedItems = ({ items }) => {
-  const donatedArray = items.filter(item => item.result === 'donated')
+const DonatedItems = ({ donatedArray }) => {
   return (
     <Row className='result-box mb-4'>
       <Col className='text-center'>
         <h2>Donated</h2>
+        <hr />
         {
           donatedArray.length === 0 ?
             <div className='placeholder-text mt-5'>
@@ -79,12 +81,12 @@ const DonatedItems = ({ items }) => {
   )
 }
 
-const SoldItems = ({ items }) => {
-  const soldArray = items.filter(item => item.result === 'sold')
+const SoldItems = ({ soldArray }) => {
   return (
     <Row className='result-box'>
       <Col className='text-center'>
         <h2>Sold</h2>
+        <hr />
         {
           soldArray.length === 0 ?
             <div className='placeholder-text mt-5'>
@@ -98,7 +100,7 @@ const SoldItems = ({ items }) => {
 }
 
 const InstructionsModal = () => {
-  const [instructionModal, toggleInstructionModal] = useToggle(true)
+  const [instructionModal, toggleInstructionModal] = useToggle(false)
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
@@ -135,6 +137,8 @@ export default function LocalStateResults() {
     const data = await res.json()
     return data;
   })
+  const donatedArray = items.filter(item => item.result === 'donated')
+  const soldArray = items.filter(item => item.result === 'sold')
 
   function handleSubmit(e) {
     // set local state to keep data on refresh
@@ -159,15 +163,23 @@ export default function LocalStateResults() {
     <Layout>
       <InstructionsModal />
       <Row>
+        <Col className='mt-1' lg='2'>
+          <h3>Progress</h3>
+        </Col>
+        <Col className='my-auto'>
+          <Progress color='warning' value={(donatedArray.length+soldArray.length)/items.length*100} />
+        </Col>
+      </Row>
+      <Row>
         <Col className='result-box text-center mr-3' lg="4" md="2">
           <DonateSellResults items={items} updateItem={updateItem} />
         </Col>
         <Col lg="4" md="2">
-          <DonatedItems items={items} />
-          <SoldItems items={items} />
+          <DonatedItems donatedArray={donatedArray} />
+          <SoldItems soldArray={soldArray} />
         </Col>
-        <Col className='resource-box ml-3 my-auto text-center' >
-          <h3>Resources</h3>
+        <Col className='ml-3 d-flex align-items-center' >
+          <h3 className='justify-content-top'>Resources</h3>
         </Col>
       </Row>
       <Row className='d-flex flex-column'>
