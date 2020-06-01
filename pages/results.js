@@ -5,10 +5,13 @@ import {
   Col,
   Row,
   UncontrolledDropdown,
+  ListGroup,
+  ListGroupItem,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Alert,
+  Media,
   Modal,
   ModalHeader,
   ModalBody,
@@ -44,7 +47,8 @@ const DonateSellDropdown = ({ updateItem, item }) => {
 
 const DonateSellResults = ({ items, updateItem }) => (
   <>
-    <h2>Donate or Sell</h2>
+    <Row className="d-flex-inline mb-2"></Row>
+    <h2 className='mt-2' >Donate or Sell</h2>
     <hr />
     {
       items.map(item => (
@@ -66,8 +70,8 @@ const DonateSellResults = ({ items, updateItem }) => (
 const DonatedItems = ({ donatedArray }) => {
   return (
     <Row className='result-box mb-4'>
-      <Col className='text-center'>
-        <h2>Donated</h2>
+      <Col className='mt-2 text-center'>
+        <Media className='donation-hands' object src='/donation.png' />
         <hr />
         {
           donatedArray.length === 0 ?
@@ -84,8 +88,8 @@ const DonatedItems = ({ donatedArray }) => {
 const SoldItems = ({ soldArray }) => {
   return (
     <Row className='result-box'>
-      <Col className='text-center'>
-        <h2>Sold</h2>
+      <Col className='mt-2 text-center'>
+        <Media className='donation-hands' object src='/money.png' />
         <hr />
         {
           soldArray.length === 0 ?
@@ -163,11 +167,14 @@ export default function LocalStateResults() {
     <Layout>
       <InstructionsModal />
       <Row>
-        <Col className='mt-1' lg='2'>
-          <h3>Progress</h3>
+        <Col className='text-center mt-1' lg='2'>
+          <h5>Your Progress</h5>
         </Col>
-        <Col className='my-auto'>
-          <Progress color='warning' value={(donatedArray.length+soldArray.length)/items.length*100} />
+        <Col lg='9' className='my-auto'>
+          <Progress color='warning' value={(donatedArray.length + soldArray.length) / items.length * 100} />
+        </Col>
+        <Col className='pl-0'>
+          <Media className='w-50' object src='/goal.png' />
         </Col>
       </Row>
       <Row>
@@ -178,8 +185,61 @@ export default function LocalStateResults() {
           <DonatedItems donatedArray={donatedArray} />
           <SoldItems soldArray={soldArray} />
         </Col>
-        <Col className='ml-3 d-flex align-items-center' >
-          <h3 className='justify-content-top'>Resources</h3>
+        <Col className='m-auto text-center' >
+          <h3>How do I donate?</h3>
+          <ListGroup>
+            <ListGroupItem
+              tag="a"
+              href="https://satruck.org/"
+              action
+            >
+              Salvation Army donation centers
+            </ListGroupItem>
+            <ListGroupItem
+              tag="a"
+              href="https://www.habitat.org/stories/does-habitat-offer-furniture-donation-pickup"
+              action
+            >
+              Schedule a Habitate for Humanity furniture pickup
+            </ListGroupItem>
+            <ListGroupItem
+              tag="a"
+              href="https://thearc.org/get-involved/ways-give/donate-physical-items/"
+              action
+            >
+              The Arc donation centers
+            </ListGroupItem>
+            <ListGroupItem
+              tag="a"
+              href="https://www.thebalance.com/tax-deduction-for-charity-donations-3192983"
+              action
+            >
+              TIP: Tax deducations for donations
+            </ListGroupItem>
+          </ListGroup>
+          <h3 className="mt-3 text-center">How do I sell?</h3>
+          <ListGroup>
+            <ListGroupItem
+              tag="a"
+              href="https://www.ebay.com/help/selling/selling-guides-tips/selling?id=4081"
+              action
+            >
+              Ebay beginners selling guide
+              </ListGroupItem>
+            <ListGroupItem
+              tag="a"
+              href="https://www.facebook.com/marketplace/learn-more/"
+              action
+            >
+              Facebook Marketplace selling guide
+              </ListGroupItem>
+            <ListGroupItem tag="a" href="https://poshmark.com/" action>
+              Poshmark: Sell your clothes online
+              </ListGroupItem>
+            <ListGroupItem tag="a" href="https://www.daveramsey.com/blog/garage-sale-tips" action>
+              Setting up a yard sale
+              </ListGroupItem>
+          </ListGroup>
         </Col>
       </Row>
       <Row className='d-flex flex-column'>

@@ -3,7 +3,7 @@
   --smokey-white: #f9f9f9;
   --main-bg-color: #f1fcfb;
   --title-color: #384443;
-  --button-hover: #faa67d;
+  --orange-main: #faa67d;
   --button-color: #66b3ac;
   --cta-color: #66b3ac;
 }
@@ -110,13 +110,6 @@ h1 span {
   min-height: 250px;
 }
 
-
-.list-group {
-  background: var(--smokey-white);
-  border: 1px solid hsl(246.9, 14.6%, 53.1%);
-  box-shadow: 7px 7px 0px 0px #888888;
-}
-
 .item {
   animation: item-flop 0.2s;
 }
@@ -185,7 +178,7 @@ span ul {
 
 #tydi-button:hover,
 #action-button:hover {
-  background-color: var(--button-hover);
+  background-color: var(--orange-main);
   box-shadow: 3px 3px 0px 0px #b6795b;
   transition: all 200ms;
 }
@@ -212,8 +205,32 @@ img {
   margin-top: -5px;
 }
 
+.donation-hands {
+  width: 50px;
+  filter: opacity(65%);
+}
+
 .header-border {
   border-bottom: solid;
+}
+
+.list-group {
+  background: var(--smokey-white);
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  border-radius: 5px;;
+  box-shadow: 2px 2px 0px 0px #888888;
+}
+
+.list-group-item {
+  background-color: #ffcfba !important;
+}
+
+.list-group-item:hover {
+  background-color: #fff2ed!important;
+}
+
+.progress-bar {
+  background-color: var(--orange-main) !important;
 }
 
 input[type='range'] {
@@ -246,7 +263,7 @@ input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
 input[type='range']:focus::-webkit-slider-runnable-track {
-  background: var(--button-hover);
+  background: var(--orange-main);
 }
 input[type='range']::-moz-range-track {
   width: 100%;
