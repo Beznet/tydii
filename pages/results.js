@@ -104,13 +104,16 @@ const SoldItems = ({ soldArray }) => {
 }
 
 const InstructionsModal = () => {
-  const [instructionModal, toggleInstructionModal] = useToggle(false)
+  const [instructionModal, toggleInstructionModal] = useToggle(true)
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
-      <ModalHeader className='justify-content-center'>
-        <h2>Time to clean up</h2>
-      </ModalHeader>
+      <Row className='justify-content-center'>
+        <ModalHeader>
+          <h2>Time to clean up</h2>
+          <Media object src='/sweep.png' />
+        </ModalHeader>
+      </Row>
       <ModalBody>
         Here you'll find the items that you weren't completely happy with from your ratings.
         As you donate and sell your things, keep track of them here and sort them as

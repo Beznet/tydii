@@ -222,11 +222,12 @@ img {
 }
 
 .list-group-item {
-  background-color: #ffcfba !important;
+  background-color: #fff2ed!important;
 }
 
 .list-group-item:hover {
-  background-color: #fff2ed!important;
+  
+  background-color: #ffcfba !important;
 }
 
 .progress-bar {
