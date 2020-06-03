@@ -104,7 +104,7 @@ const SoldItems = ({ soldArray }) => {
 }
 
 const InstructionsModal = () => {
-  const [instructionModal, toggleInstructionModal] = useToggle(true)
+  const [instructionModal, toggleInstructionModal] = useToggle(false)
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
@@ -178,19 +178,19 @@ export default function LocalStateResults() {
         <Col lg='9' className='my-auto'>
           <Progress color='warning' value={(donatedArray.length + soldArray.length) / items.length * 100} />
         </Col>
-        <Col className='pl-0'>
-          <Media className='w-50' object src='/goal.png' />
+        <Col className='pl-0 mt-1'>
+          <h5 className='d-none d-md-block'>100%</h5>
         </Col>
       </Row>
       <Row>
-        <Col className='result-box text-center mr-3' lg="4" md="2">
+        <Col className='result-box text-center mr-3' lg="4" md="6" sm="6">
           <DonateSellResults items={items} updateItem={updateItem} />
         </Col>
-        <Col lg="4" md="2">
+        <Col lg="4" md="5" sm="5">
           <DonatedItems donatedArray={donatedArray} />
           <SoldItems soldArray={soldArray} />
         </Col>
-        <Col className='m-auto text-center' >
+        <Col className='m-auto text-center d-none d-lg-block' >
           <h3>How do I donate?</h3>
           <ListGroup>
             <ListGroupItem

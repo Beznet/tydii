@@ -81,7 +81,7 @@ function LoginForm({ setDatabaseItems }) {
           <ModalBody>
             <FormGroup>
               <Label for='email'>
-                Email
+                <h5>Email</h5>
               <Input
                   name="email"
                   type="email"
@@ -92,7 +92,7 @@ function LoginForm({ setDatabaseItems }) {
             </FormGroup>
             <FormGroup>
               <Label for='password'>
-                Password
+                <h5>Password</h5>
             <Input
                   name="password"
                   type="password"
@@ -101,8 +101,8 @@ function LoginForm({ setDatabaseItems }) {
                 />
               </Label>
             </FormGroup>
-            <ModalFooter>
-              <Input type="submit" value="Submit" />
+            <ModalFooter className='justify-content-center'>
+              <button className='w-25' type="submit" value="Submit"> Login </button>
             </ModalFooter>
             {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
           </ModalBody>

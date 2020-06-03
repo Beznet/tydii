@@ -61,7 +61,7 @@ function SignupForm() {
           <ModalBody>
             <FormGroup>
               <Label for="email">
-                Email
+                <h5>Email</h5>
             <Input
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -72,7 +72,7 @@ function SignupForm() {
             </FormGroup>
             <FormGroup>
               <Label for="password">
-                Password
+                <h5>Password</h5>
             <Input
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -81,8 +81,8 @@ function SignupForm() {
                 />
               </Label>
             </FormGroup>
-            <ModalFooter>
-              <button type="submit" value="Submit">Submit</button>
+            <ModalFooter className='justify-content-center'>
+              <button className='w-25' type="submit" value="Submit">Submit</button>
             </ModalFooter>
             {signupError && <p style={{ color: 'red' }}>{signupError}</p>}
           </ModalBody>
