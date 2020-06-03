@@ -108,12 +108,14 @@ const InstructionsModal = () => {
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
-      <Row className='justify-content-center'>
-        <ModalHeader>
-          <h2>Time to clean up</h2>
-          <Media object src='/sweep.png' />
+        <ModalHeader className='justify-content-center'>
+          <Row>
+            <Col className='d-flex'>
+              <h2 className='rid-text'>Time to clean up</h2>
+              <Media className='ml-2' object src='/sweep.png' />
+            </Col>
+          </Row>
         </ModalHeader>
-      </Row>
       <ModalBody>
         Here you'll find the items that you weren't completely happy with from your ratings.
         As you donate and sell your things, keep track of them here and sort them as
