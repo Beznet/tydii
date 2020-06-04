@@ -100,6 +100,15 @@ h1 span {
   border: 1px solid hsl(246.9, 14.6%, 53.1%);
   box-shadow: 5px 5px 0px 0px #888888;
   min-height: 300px;
+  margin-right: 10px;
+}
+
+.ds-result-box {
+  background: var(--smokey-white);
+  color: #0a0a0a;
+  border: 1px solid hsl(246.9, 14.6%, 53.1%);
+  box-shadow: 5px 5px 0px 0px #888888;
+  min-height: 300px;
 }
 
 .resource-box {
@@ -360,5 +369,13 @@ input[type='range']:focus::-ms-fill-upper {
     position: relative;
     margin-left: 10px;
     z-index: 999;
+  }
+
+  .result-box {
+    margin: 10px 15px 10px 15px;
+  }
+
+  .ds-result-box {
+    margin: 10px;
   }
 }

@@ -21,18 +21,18 @@ const Header = () => {
 
   return (
     <Row className="mb-2 mt-sm-2">
-      <Col sm="3"></Col>
-      <Col className="text-center" sm="6">
+      <Col></Col>
+      <Col className="text-center">
         <Title copy="Tydii" role="heading" />
       </Col>
-      <Col sm="3">
+      <Col>
         {loggedIn &&
           <Row>
-            <Col className='d-flex flex-column'>
-              <span>Welcome back!</span>
+            <Col className='d-flex justify-content-end'>
               <Link href='/'>
                 <a>
                   <button
+                    className='badge badge-pill shadow-sm'
                     onClick={() => {
                       cookie.remove('token')
                       revalidate()

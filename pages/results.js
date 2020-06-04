@@ -47,7 +47,6 @@ const DonateSellDropdown = ({ updateItem, item }) => {
 
 const DonateSellResults = ({ items, updateItem }) => (
   <>
-    <Row className="d-flex-inline mb-2"></Row>
     <h2 className='mt-2' >Donate or Sell</h2>
     <hr />
     {
@@ -69,7 +68,7 @@ const DonateSellResults = ({ items, updateItem }) => (
 
 const DonatedItems = ({ donatedArray }) => {
   return (
-    <Row className='result-box mb-4'>
+    <Row className='ds-result-box mb-4'>
       <Col className='mt-2 text-center'>
         <Media className='donation-hands' object src='/donation.png' />
         <hr />
@@ -87,7 +86,7 @@ const DonatedItems = ({ donatedArray }) => {
 
 const SoldItems = ({ soldArray }) => {
   return (
-    <Row className='result-box'>
+    <Row className='ds-result-box'>
       <Col className='mt-2 text-center'>
         <Media className='donation-hands' object src='/money.png' />
         <hr />
@@ -176,14 +175,14 @@ export default function LocalStateResults() {
           <h5>Your Progress</h5>
         </Col>
         <Col lg='9' className='my-auto'>
-          <Progress color='warning' value={(donatedArray.length + soldArray.length) / items.length * 100} />
+          <Progress value={(donatedArray.length + soldArray.length) / items.length * 100} />
         </Col>
         <Col className='pl-0 mt-1'>
           <h5 className='d-none d-md-block'>100%</h5>
         </Col>
       </Row>
       <Row>
-        <Col className='result-box text-center mr-3' lg="4" md="6" sm="6">
+        <Col className='result-box text-center' lg="4" md="6" sm="6">
           <DonateSellResults items={items} updateItem={updateItem} />
         </Col>
         <Col lg="4" md="5" sm="5">
