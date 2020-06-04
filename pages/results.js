@@ -68,8 +68,8 @@ const DonateSellResults = ({ items, updateItem }) => (
 
 const DonatedItems = ({ donatedArray }) => {
   return (
-    <Row className='ds-result-box mb-4'>
-      <Col className='mt-2 text-center'>
+    <Row className='mb-2'>
+      <Col className='ds-result-box text-center'>
         <Media className='donation-hands' object src='/donation.png' />
         <hr />
         {
@@ -86,8 +86,8 @@ const DonatedItems = ({ donatedArray }) => {
 
 const SoldItems = ({ soldArray }) => {
   return (
-    <Row className='ds-result-box'>
-      <Col className='mt-2 text-center'>
+    <Row>
+      <Col className='ds-result-box mt-2 text-center'>
         <Media className='donation-hands' object src='/money.png' />
         <hr />
         {
