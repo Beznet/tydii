@@ -150,6 +150,13 @@ span ul {
   box-shadow: 3px 3px 0px 0px hsl(246.9, 14.6%, 53.1%);
 }
 
+.btn-secondary {
+  background-color: var(--button-color) !important;
+  color: var(--smokey-white) !important ; 
+  font-weight: 900 !important;
+  width: 100px;
+}
+
 .flipped-sweep {
   transform: scaleX(-1);
 }
@@ -378,4 +385,5 @@ input[type='range']:focus::-ms-fill-upper {
   .ds-result-box {
     margin: 10px;
   }
+
 }

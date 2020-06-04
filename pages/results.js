@@ -171,13 +171,13 @@ export default function LocalStateResults() {
     <Layout>
       <InstructionsModal />
       <Row>
-        <Col className='text-center mt-1' lg='2'>
+        <Col className='text-center my-1' lg='2'>
           <h5>Your Progress</h5>
         </Col>
         <Col lg='9' className='my-auto'>
           <Progress value={(donatedArray.length + soldArray.length) / items.length * 100} />
         </Col>
-        <Col className='pl-0 mt-1'>
+        <Col className='pl-0'>
           <h5 className='d-none d-md-block'>100%</h5>
         </Col>
       </Row>
