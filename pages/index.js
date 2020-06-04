@@ -6,7 +6,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  Alert
+  Alert,
+  Media
 } from 'reactstrap'
 import Layout from '../components/Layout'
 import ItemInput from '../components/ItemInput'
@@ -77,11 +78,14 @@ const LoggedInChoice = ({ databaseItems }) => {
       modalTransition={{ timeout: 0 }}
       backdropTransition={{ timeout: 0 }}
     >
-      <ModalHeader>You have an existing list</ModalHeader>
-      <ModalBody>
+      <ModalHeader className='justify-content-center' tag='h2'>
+        Welcome Back!
+        <Media className='ml-2'src='/smile-face.png' />
+      </ModalHeader>
+      <ModalBody className='d-flex justify-content-around mb-3'>
         <Link href='/results'>
           <a>
-            <button onClick={() => setLocalItems(databaseItems)}>Go to my list</button>
+            <button onClick={() => setLocalItems(databaseItems)}>Go to saved list</button>
           </a>
         </Link>
         <button onClick={toggleChoiceModal}>Create a new list</button>

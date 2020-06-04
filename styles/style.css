@@ -114,6 +114,10 @@ h1 span {
   animation: item-flop 0.2s;
 }
 
+.modal-title {
+  display: flex;
+}
+
 span ul {
   font-size: 10px;
 }
