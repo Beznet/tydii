@@ -386,4 +386,8 @@ input[type='range']:focus::-ms-fill-upper {
     margin: 15px;
   }
 
+  .list-group {
+    all: unset;
+  }
+
 }
