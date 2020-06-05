@@ -52,7 +52,7 @@ const DonateSellResults = ({ items, updateItem }) => (
     {
       items.map(item => (
         <Row className="d-flex-inline mb-2">
-          <Col className="d-flex-inline" xs='8'>
+          <Col className="d-flex-inline" xs='7'>
             <h5>
               {item.result !== 'owned' ? <s>{item.name}</s> : item.name}
             </h5>
@@ -103,14 +103,14 @@ const SoldItems = ({ soldArray }) => {
 }
 
 const InstructionsModal = () => {
-  const [instructionModal, toggleInstructionModal] = useToggle(false)
+  const [instructionModal, toggleInstructionModal] = useToggle(true)
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
         <ModalHeader className='justify-content-center'>
           <Row>
             <Col className='d-flex'>
-              <h2 className='rid-text'>Time to clean up</h2>
+              <h2 className='rid-text'>Time to Tydii Up!</h2>
               <Media className='ml-2' object src='/sweep.png' />
             </Col>
           </Row>
@@ -170,15 +170,15 @@ export default function LocalStateResults() {
   return (
     <Layout>
       <InstructionsModal />
-      <Row>
+      <Row className='mb-2'>
         <Col className='text-center my-1' lg='2'>
           <h5>Your Progress</h5>
         </Col>
         <Col lg='9' className='my-auto'>
           <Progress value={(donatedArray.length + soldArray.length) / items.length * 100} />
         </Col>
-        <Col className='pl-0'>
-          <h5 className='d-none d-md-block'>100%</h5>
+        <Col className='d-none d-lg-block mt-2 pl-0'>
+          <h5 className='d-none d-lg-block'>100%</h5>
         </Col>
       </Row>
       <Row>
@@ -201,7 +201,7 @@ export default function LocalStateResults() {
       </Row>
       <Row className='d-flex flex-column'>
         <Col className='text-center'>
-          <button className='w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
+          <button className='acct-action-btn w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
           <Alert className='text-center mx-auto w-50' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>
         </Col>
       </Row>

@@ -67,7 +67,7 @@ function LoginForm({ setDatabaseItems }) {
 
   return (
     <>
-      <button onClick={toggleLoginModal} color='success' className='m-1 badge badge-pill shadow-sm'>Login</button>
+      <button onClick={toggleLoginModal} color='success' className='acct-action-btn m-1 badge badge-pill shadow-sm'>Login</button>
       <Modal
         isOpen={loginModalOpen}
         toggle={handleCloseClick}

@@ -47,7 +47,7 @@ function SignupForm() {
   }
   return (
     <>
-      <button onClick={toggleSignupModal} color='success' className='m-1 badge badge-pill shadow-sm'>Sign Up</button>
+      <button onClick={toggleSignupModal} color='success' className='acct-action-btn m-1 badge badge-pill shadow-sm'>Sign Up</button>
       <Modal
         isOpen={signupModalOpen}
         toggle={handleCloseClick}

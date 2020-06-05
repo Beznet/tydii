@@ -32,7 +32,7 @@ const Header = () => {
               <Link href='/'>
                 <a>
                   <button
-                    className='badge badge-pill shadow-sm'
+                    className='acct-action-btn badge badge-pill shadow-sm'
                     onClick={() => {
                       cookie.remove('token')
                       revalidate()
