@@ -70,7 +70,7 @@ const DonatedItems = ({ donatedArray }) => {
   return (
     <Row className='mb-2'>
       <Col className='ds-result-box text-center'>
-        <Media className='mt-2 donation-hands' object src='/donation.png' />
+        <Media className='mt-2 misc-icons' object src='/donation.png' />
         <hr />
         {
           donatedArray.length === 0 ?
@@ -88,7 +88,7 @@ const SoldItems = ({ soldArray }) => {
   return (
     <Row>
       <Col className='ds-result-box mt-2 text-center'>
-        <Media className='mt-2 donation-hands' object src='/money.png' />
+        <Media className='mt-2 misc-icons' object src='/money.png' />
         <hr />
         {
           soldArray.length === 0 ?
@@ -111,6 +111,8 @@ const ProgressBar = ({donatedArray, soldArray, items, toggleFinishModal}) => {
   }, [items])
 
   const progressBarFill = (donatedArray.length + soldArray.length) / items.length * 100
+
+  console.log('fill level', progressBarFill)
   return (
     <Row className='mb-2'>
       <Col className='text-center my-1' lg='2'>
@@ -127,7 +129,7 @@ const ProgressBar = ({donatedArray, soldArray, items, toggleFinishModal}) => {
 }
 
 const InstructionsModal = () => {
-  const [instructionModal, toggleInstructionModal] = useToggle(false)
+  const [instructionModal, toggleInstructionModal] = useToggle(true)
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
@@ -135,7 +137,7 @@ const InstructionsModal = () => {
           <Row>
             <Col className='d-flex'>
               <h2 className='rid-text'>Time to Tydii Up!</h2>
-              <Media className='ml-2' object src='/sweep.png' />
+              <Media className='misc-icons ml-2' object src='/sweep.png' />
             </Col>
           </Row>
         </ModalHeader>
@@ -167,7 +169,7 @@ const FinishModal = ({finishModal, toggleFinishModal}) => {
           <Row>
             <Col className='d-flex'>
               <h2 className='rid-text'>You did it!</h2>
-              <Media className='ml-2' object src='/love-face.png' />
+              <Media className='misc-icons ml-2' object src='/love-face.png' />
             </Col>
           </Row>
         </ModalHeader>
@@ -234,8 +236,12 @@ export default function LocalStateResults() {
   return (
     <Layout>
       <InstructionsModal />
-      <ProgressBar donatedArray={donatedArray} soldArray={soldArray} items={items} toggleFinishModal={toggleFinishModal} />
       <FinishModal finishModal={finishModal} toggleFinishModal={toggleFinishModal} />
+      <Row>
+        <Col>
+          <ProgressBar donatedArray={donatedArray} soldArray={soldArray} items={items} toggleFinishModal={toggleFinishModal} />
+        </Col>
+      </Row>
       <Row>
         <Col className='result-box text-center' lg="4" md="6" sm="6">
           <DonateSellResults items={items} updateItem={updateItem} />
@@ -254,7 +260,7 @@ export default function LocalStateResults() {
           <Resources />
         </Col>
       </Row>
-      <Row className='d-flex flex-column'>
+      <Row>
         <Col className='text-center'>
           <button className='acct-action-btn w-25 mt-3' type='submit' onClick={handleSubmit}>Save</button>
           <Alert className='text-center mx-auto w-50' color="success" isOpen={visibleAlert} toggle={() => setVisibleAlert(false)} fade={true}>Save Successful!</Alert>

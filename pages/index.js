@@ -80,7 +80,7 @@ const LoggedInChoice = ({ databaseItems }) => {
     >
       <ModalHeader className='justify-content-center' tag='h2'>
         Welcome Back!
-        <Media className='ml-2'src='/smile-face.png' />
+        <Media className='misc-icons ml-2'src='/smile-face.png' />
       </ModalHeader>
       <ModalBody className='d-flex justify-content-around mb-3'>
         <Link href='/results'>

@@ -193,6 +193,8 @@ span ul {
 }
 
 #footer {
+  position: absolute;
+  bottom: 0;
   height: 30px;
 }
 
@@ -214,8 +216,9 @@ img {
   margin-top: -5px;
 }
 
-.donation-hands {
+.misc-icons {
   width: 50px;
+  height: 50px;
   filter: opacity(65%);
 }
 
@@ -353,6 +356,10 @@ input[type='range']:focus::-ms-fill-upper {
 
 @media (max-width: 768px) {
 
+  #footer {
+    position: relative;
+  }
+
   .face-img {
     width: 35px;
   }
@@ -383,6 +390,11 @@ input[type='range']:focus::-ms-fill-upper {
 
   .list-group {
     all: unset;
+  }
+
+  #footer {
+    padding-top: 20px;
+    position: relative;
   }
 
 }

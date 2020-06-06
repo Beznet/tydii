@@ -6,7 +6,7 @@ import '../styles/style.css'
 
 const Layout = ({ children }) => (
   <>
-    <Container className="container pt-3 clearfix d-flex flex-column">
+    <Container className="container pt-3 clearfix">
       <base target="_blank" />
       <Header />
       {children}
