@@ -1,5 +1,5 @@
 import Layout from '../components/Layout'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import usePersistedState from '../hooks/usePersistedState'
 import {
   Col,
@@ -102,8 +102,32 @@ const SoldItems = ({ soldArray }) => {
   )
 }
 
+const ProgressBar = ({donatedArray, soldArray, items, toggleFinishModal}) => {
+
+  useEffect(() => {
+    if(donatedArray.length + soldArray.length === items.length) {
+      toggleFinishModal()
+    }
+  }, [items])
+
+  const progressBarFill = (donatedArray.length + soldArray.length) / items.length * 100
+  return (
+    <Row className='mb-2'>
+      <Col className='text-center my-1' lg='2'>
+        <h5>Your Progress</h5>
+      </Col>
+      <Col lg='9' className='my-auto'>
+        <Progress value={progressBarFill} />
+      </Col>
+      <Col className='d-none d-lg-block mt-2 pl-0'>
+        <h5 className='d-none d-lg-block'>100%</h5>
+      </Col>
+    </Row>
+  )
+}
+
 const InstructionsModal = () => {
-  const [instructionModal, toggleInstructionModal] = useToggle(true)
+  const [instructionModal, toggleInstructionModal] = useToggle(false)
 
   return (
     <Modal centered toggle={toggleInstructionModal} isOpen={instructionModal}>
@@ -135,6 +159,45 @@ const InstructionsModal = () => {
 
 }
 
+const FinishModal = ({finishModal, toggleFinishModal}) => {
+
+  return (
+    <Modal centered toggle={toggleFinishModal} isOpen={finishModal}>
+        <ModalHeader className='justify-content-center'>
+          <Row>
+            <Col className='d-flex'>
+              <h2 className='rid-text'>You did it!</h2>
+              <Media className='ml-2' object src='/love-face.png' />
+            </Col>
+          </Row>
+        </ModalHeader>
+      <ModalBody>
+        You made a lot of big decisions during this whole process so you
+        deserve to give yourself a big pat on the back. Please consider sharing
+        the good news with your friends on social media!
+        <div className='mt-3'>
+          <a href="https://twitter.com/share?text=Just finished getting rid of my stuff with Tydii!&url=https://tydiiup.com"
+          className="twitter-share-button mr-2" 
+          data-hashtags="tydiiup" 
+          data-show-count="false">
+            <Media className='social-icons' object src='/twitter.png' />
+          </a>
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftydiiup.com%2F&amp;src=sdkpreparse">
+            <Media className='social-icons' object src='/facebook.png' />
+          </a>
+        </div>
+      </ModalBody>
+      <ModalFooter className='justify-content-start'>
+        Help out the Tydii creator:
+        <a target="_blank" href="https://www.paypal.me/bennettdungan1">
+        <button color='success' className='acct-action-btn m-1 badge badge-pill shadow-sm'>Donate</button>
+        </a>
+      </ModalFooter>
+    </Modal>
+  )
+
+}
+
 export default function LocalStateResults() {
   const [localStateItems, setLocalStateItems] = usePersistedState('items', {})
   const localStateValues = Object.values(localStateItems)
@@ -147,6 +210,7 @@ export default function LocalStateResults() {
   })
   const donatedArray = items.filter(item => item.result === 'donated')
   const soldArray = items.filter(item => item.result === 'sold')
+  const [finishModal, toggleFinishModal] = useToggle(false)
 
   function handleSubmit(e) {
     // set local state to keep data on refresh
@@ -170,17 +234,8 @@ export default function LocalStateResults() {
   return (
     <Layout>
       <InstructionsModal />
-      <Row className='mb-2'>
-        <Col className='text-center my-1' lg='2'>
-          <h5>Your Progress</h5>
-        </Col>
-        <Col lg='9' className='my-auto'>
-          <Progress value={(donatedArray.length + soldArray.length) / items.length * 100} />
-        </Col>
-        <Col className='d-none d-lg-block mt-2 pl-0'>
-          <h5 className='d-none d-lg-block'>100%</h5>
-        </Col>
-      </Row>
+      <ProgressBar donatedArray={donatedArray} soldArray={soldArray} items={items} toggleFinishModal={toggleFinishModal} />
+      <FinishModal finishModal={finishModal} toggleFinishModal={toggleFinishModal} />
       <Row>
         <Col className='result-box text-center' lg="4" md="6" sm="6">
           <DonateSellResults items={items} updateItem={updateItem} />

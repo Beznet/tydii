@@ -219,6 +219,10 @@ img {
   filter: opacity(65%);
 }
 
+.social-icons {
+  width: 30px;
+}
+
 .header-border {
   border-bottom: solid;
 }
