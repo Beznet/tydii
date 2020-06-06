@@ -190,7 +190,7 @@ const FinishModal = ({finishModal, toggleFinishModal}) => {
       <ModalFooter className='justify-content-start'>
         Help out the Tydii creator:
         <a target="_blank" href="https://www.paypal.me/bennettdungan1">
-        <button color='success' className='acct-action-btn m-1 badge badge-pill shadow-sm'>Donate</button>
+        <button color='success' className='acct-action-btn badge badge-pill shadow-sm'>Donate</button>
         </a>
       </ModalFooter>
     </Modal>
