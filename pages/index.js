@@ -115,7 +115,7 @@ export default function Index() {
 
   return (
     <Layout>
-      <Row>
+      <Row className='main-index-row'>
         <Col lg="3" md="2"></Col>
         <Col className="align-items-center" lg="6" md="8">
           <div className="form-box">
@@ -143,13 +143,17 @@ export default function Index() {
             </Row>
             : ''}
         </Col>
-        <Col lg="3" md="2">
+        <Col className='d-md-block d-inline-flex justify-content-end'lg="3" md="2">
           {!loggedIn
             ?
-            <div className='d-flex flex-column w-50'>
-              <SignupForm />
-              <LoginForm setDatabaseItems={setDatabaseItems} />
-            </div>
+            <>
+              <div>
+                <SignupForm />
+              </div>
+              <div>
+                <LoginForm setDatabaseItems={setDatabaseItems} />
+              </div>
+            </>
             :
             <>
               {databaseItems && <LoggedInChoice databaseItems={databaseItems} />}

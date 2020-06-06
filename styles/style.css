@@ -65,14 +65,14 @@ h1 span {
 }
 
 .acct-action-btn {
-  background-color: var(--orange-main);
+  background-color: #ffcfba;
   color: var(--title-color);
   border-radius: 10px;
   font-weight: 900;
 }
 
 .acct-action-btn:hover {
-  background-color: var(--button-color);
+  background-color: var(--orange-main);
   color: var(--smokey-white);
 }
 
@@ -351,6 +351,10 @@ input[type='range']:focus::-ms-fill-upper {
 
   .face-img {
     width: 35px;
+  }
+
+  .main-index-row {
+    flex-direction: column-reverse;
   }
 
 }
