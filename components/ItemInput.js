@@ -1,14 +1,15 @@
-import React from 'react';
-import { Form, FormGroup, Input } from 'reactstrap';
-import useInputState from './useInputState';
+import React from 'react'
+import { Form, FormGroup, Input } from 'reactstrap'
+import useInputState from '../hooks/useInputState'
 
-const ItemForm = ({ saveItem }) => {
-  const { value, reset, onChange } = useInputState('');
+const ItemInput = ({ saveItem }) => {
+  const { value, reset, onChange } = useInputState('')
+
   const itemSubmit = event => {
-    event.preventDefault();
-    saveItem(value);
-    reset();
-  };
+    event.preventDefault()
+    saveItem(value)
+    reset()
+  }
 
   return (
     <Form onSubmit={itemSubmit}>
@@ -22,7 +23,7 @@ const ItemForm = ({ saveItem }) => {
         />
         <button
           type="submit"
-          id="add-button"
+          id="action-button"
           className="ml-2"
           onClick={itemSubmit}
         >
@@ -30,7 +31,7 @@ const ItemForm = ({ saveItem }) => {
         </button>
       </FormGroup>
     </Form>
-  );
-};
+  )
+}
 
-export default ItemForm;
+export default ItemInput

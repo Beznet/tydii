@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import { Col, Row } from 'reactstrap';
+import Link from 'next/link'
+import { Col, Row } from 'reactstrap'
 
 const Footer = ({ className }) => (
   <Row className={className} id="footer">
-    <Col className="ml-3 align-items-start w-100" xs="6">
+    <Col className="ml-3 w-100 d-flex" xs="6">
       <Link href="/about">
         <a>
           <img alt="question-mark" src="./question.png" />
@@ -21,6 +21,6 @@ const Footer = ({ className }) => (
       </Link>
     </Col>
   </Row>
-);
+)
 
-export default Footer;
+export default Footer

@@ -1,4 +1,4 @@
-import React , { useEffect, useRef } from 'react';
+import React, { useRef } from 'react'
 
 const faceImages = [
   '',
@@ -7,15 +7,15 @@ const faceImages = [
   '/smirk-face.png',
   '/smile-face.png',
   '/love-face.png',
-];
+]
 
 const Slider = ({ value, onValueChange }) => {
   const ref = useRef()
   const onChange = e => {
-    onValueChange(e.target.value);
+    onValueChange(e.target.value)
     ref.current.classList.add("bounce")
-    setTimeout(()=> ref.current.classList.remove("bounce"), 200)
-  };
+    setTimeout(() => ref.current.classList.remove("bounce"), 200)
+  }
 
   return (
     <>
@@ -27,6 +27,6 @@ const Slider = ({ value, onValueChange }) => {
         alt="face-rating"
       />
     </>
-  );
-};
-export default Slider;
+  )
+}
+export default Slider
