@@ -13,7 +13,15 @@ to expand this idea into an app to allow people to have a set of 'emotions' to h
 
 ## Upcoming features
 
-- user profiles to save your lists of items
+- eBay pricing history integration for items looking to be sold
+
+## Add .env file
+
+Make sure you create a `.env` file in the root directory to add these three environment variables:
+
+1. `URL` - this will point to your local database, usually mongodb://localhost:27017
+2. `DB_NAME` - the name you gave your database
+3. `JWT_SECRET` - This JSON Web Token Secret can be any sort of combination of letters/numbers
 
 ## Run locally
 
