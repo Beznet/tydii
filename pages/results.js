@@ -141,14 +141,17 @@ const InstructionsModal = () => {
             </Col>
           </Row>
         </ModalHeader>
-      <ModalBody>
+      <ModalBody className='d-block'>
         Here you'll find the items that you weren't completely happy with from your ratings.
         As you donate and sell your things, keep track of them here and sort them as
-        you go. Check out our resources if you need help figuring out how to go about
-        donating or selling your stuff. Its time to Tydii up!
+        you go. Check out the resources if you need help figuring out how to
+        donate or sell your stuff. It's time to Tydii up!
+        <div className='text-center mt-3'>
+          <button onClick={toggleInstructionModal}>Close</button>
+        </div>
       </ModalBody>
       <ModalFooter>
-        <Col className="quote text-center mt-5" xs="12">
+        <Col className="quote text-center mt-2" xs="12">
           “It is the preoccupation with possessions that prevents us
           from living freely and nobly.”
         <Col className="blockquote-footer" xs="12">
