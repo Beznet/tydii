@@ -7,7 +7,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  Spinner
 } from 'reactstrap'
 import cookie from 'js-cookie'
 import { mutate } from 'swr'
@@ -18,6 +19,7 @@ function LoginForm({ setDatabaseItems }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginModalOpen, toggleLoginModal] = useToggle()
+  const [loading, setLoading] = useState(false)
 
   const handleCloseClick = useCallback(() => {
     setEmail()
@@ -27,6 +29,7 @@ function LoginForm({ setDatabaseItems }) {
 
   function handleSubmit(e) {
     e.preventDefault()
+    setLoading(true)
     //call api
     fetch('/api/auth', {
       method: 'POST',
@@ -43,6 +46,7 @@ function LoginForm({ setDatabaseItems }) {
       })
       .then((data) => {
         if (data && data.error) {
+          setLoading(false)
           setLoginError(data.message)
         }
         // checks if user has logged in and has an object of items
@@ -52,6 +56,7 @@ function LoginForm({ setDatabaseItems }) {
           // resets field data & closes modal
           setEmail()
           setPassword()
+          setLoading(false)
           mutate('/api/me')
           // if user only has an empty object of items, close modal
         } else if (data && data.token) {
@@ -60,6 +65,7 @@ function LoginForm({ setDatabaseItems }) {
           setEmail()
           setPassword()
           toggleLoginModal()
+          setLoading(false)
           mutate('/api/me')
         }
       })
@@ -104,7 +110,10 @@ function LoginForm({ setDatabaseItems }) {
             <ModalFooter className='justify-content-center'>
               <button className='w-25' type="submit" value="Submit"> Login </button>
             </ModalFooter>
-            {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
+            <div className='text-center'>
+              {loading ? <Spinner color='secondary' /> : ''}
+              {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
+            </div>
           </ModalBody>
         </Form>
       </Modal>
