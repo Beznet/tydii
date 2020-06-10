@@ -14,6 +14,11 @@ const ItemList = ({ items, deleteItem, updateItem }) => {
           Add items you're unsure about keeping. Think about each one then rate
           that item on how happy it makes you feel.
         </h4>
+        <br />
+        <h4>
+          Once done rating each item, select the Tydii Up button below to see what things you
+          need to part ways with.
+        </h4>
       </Col>
     ) : (
         items.map(item => {
