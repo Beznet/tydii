@@ -27,7 +27,7 @@ function LoginForm({ setDatabaseItems }) {
     toggleLoginModal()
   }, [])
 
-  function handleSubmit(e) {
+  function handleLoginSubmit(e) {
     e.preventDefault()
     setLoading(true)
     //call api
@@ -80,7 +80,7 @@ function LoginForm({ setDatabaseItems }) {
         modalTransition={{ timeout: 0 }}
         backdropTransition={{ timeout: 0 }}
       >
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleLoginSubmit}>
           <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
             Login
           </ModalHeader>
