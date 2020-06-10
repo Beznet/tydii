@@ -50,7 +50,7 @@ const TydiiButton = ({ items, loggedIn, toggleHighRatedAlert }) => {
         </button>
           <Modal centered toggle={toggleButtonModal} isOpen={buttonModal}>
             <ModalBody>
-              Sign up or login to see your results
+              Sign Up or Login to see your results <h3 className='d-inline'>☺</h3>
           </ModalBody>
           </Modal>
         </>
