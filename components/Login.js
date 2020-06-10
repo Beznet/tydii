@@ -13,6 +13,7 @@ import {
 import cookie from 'js-cookie'
 import { mutate } from 'swr'
 import useToggle from '../hooks/useToggle'
+import { handleLoginSubmit } from '../calls/rest.js'
 
 function LoginForm({ setDatabaseItems }) {
   const [loginError, setLoginError] = useState('')
@@ -27,20 +28,11 @@ function LoginForm({ setDatabaseItems }) {
     toggleLoginModal()
   }, [])
 
-  function handleLoginSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
     //call api
-    fetch('/api/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
+    handleLoginSubmit(e, email, password)
       .then((r) => {
         return r.json()
       })
@@ -80,7 +72,7 @@ function LoginForm({ setDatabaseItems }) {
         modalTransition={{ timeout: 0 }}
         backdropTransition={{ timeout: 0 }}
       >
-        <Form onSubmit={handleLoginSubmit}>
+        <Form onSubmit={handleSubmit}>
           <ModalHeader tag='h2' close={<i className='close fa fa-close cursor-pointer' onClick={handleCloseClick} />}>
             Login
           </ModalHeader>

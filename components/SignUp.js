@@ -13,7 +13,7 @@ import {
 import cookie from 'js-cookie'
 import { mutate } from 'swr'
 import useToggle from '../hooks/useToggle'
-import handleSignupSubmit from '../calls/rest'
+import { handleSignupSubmit } from '../calls/rest'
 
 function SignupForm() {
   const [signupError, setSignupError] = useState('')
