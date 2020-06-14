@@ -1,6 +1,5 @@
 
-export function handleSignupSubmit(e, email, password) {
-  e.preventDefault()
+export function signup (email, password) {
   let data = fetch('/api/users', {
     method: 'POST',
     headers: {
@@ -14,8 +13,7 @@ export function handleSignupSubmit(e, email, password) {
   return data
 }
 
-export function handleLoginSubmit (e, email, password) {
-  e.preventDefault()
+export function login (email, password) {
   let data = fetch('/api/auth', {
     method: 'POST',
     headers: {

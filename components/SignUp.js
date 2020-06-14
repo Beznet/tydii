@@ -13,7 +13,7 @@ import {
 import cookie from 'js-cookie'
 import { mutate } from 'swr'
 import useToggle from '../hooks/useToggle'
-import { handleSignupSubmit } from '../calls/rest'
+import { signup } from '../calls/rest'
 
 function SignupForm() {
   const [signupError, setSignupError] = useState('')
@@ -29,14 +29,13 @@ function SignupForm() {
   }, [])
 
   function handleSubmit(e) {
-    let userEmail = email
-    let userPassword = password
+    e.preventDefault()
 
     // start spinner until data is fetched
     setLoading(true)
 
     // call api
-    handleSignupSubmit(e, userEmail, userPassword)
+    signup(email, password)
       .then((r) => r.json())
       .then((data) => {
         if (data && data.error) {

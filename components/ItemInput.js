@@ -5,8 +5,8 @@ import useInputState from '../hooks/useInputState'
 const ItemInput = ({ saveItem }) => {
   const { value, reset, onChange } = useInputState('')
 
-  const itemSubmit = event => {
-    event.preventDefault()
+  const itemSubmit = e => {
+    e.preventDefault()
     saveItem(value)
     reset()
   }

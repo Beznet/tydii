@@ -13,7 +13,7 @@ import {
 import cookie from 'js-cookie'
 import { mutate } from 'swr'
 import useToggle from '../hooks/useToggle'
-import { handleLoginSubmit } from '../calls/rest.js'
+import { login } from '../calls/rest.js'
 
 function LoginForm({ setDatabaseItems }) {
   const [loginError, setLoginError] = useState('')
@@ -32,7 +32,7 @@ function LoginForm({ setDatabaseItems }) {
     e.preventDefault()
     setLoading(true)
     //call api
-    handleLoginSubmit(e, email, password)
+    login(email, password)
       .then((r) => {
         return r.json()
       })
