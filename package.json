@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "dotenv": "^8.2.0",
