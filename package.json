@@ -20,7 +20,7 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "dotenv": "^8.2.0",
-    "immer": "^5.3.6",
+    "immer": "^9.0.6",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
